@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="scoot.css">
+    <title>checkout</title>
+</head>
+<body>
+    <div class="payment-methods">
+        <div class="method-box" id="walletMethod">
+          <h3>المحافظ الإلكترونية</h3>
+          <div class="wallet-options">
+            <img src="../liner scoot/imgs/Vodafone-Cash-Logo.png" alt="Vodafone Cash" />
+            <img src="../liner scoot/imgs/unnamed.png" alt="Other Wallet" />
+          </div>
+        </div>
+      </div>
+      
+      <div class="wallet-payment-form" id="walletForm">
+        <img src="../liner scoot/imgs/Vodafone-Cash-Logo.png" alt="Vodafone" class="vodafone-logo" />
+        <h2>Checkout</h2>
+        <form class="check">
+          <label for="walletNumber">رقم المحفظة</label>
+          <input type="text" id="walletNumber" placeholder="01066131104" required />
+      
+          <label for="amount">المبلغ</label>
+          <input type="text" id="amount" placeholder="65 L.E" required />
+      
+          <label for="walletPin">PIN</label>
+          <input type="password" id="walletPin" placeholder="*" required />
+      
+          <label for="otp">OTP</label>
+          <input type="password" id="otp" placeholder="*" required />
+      
+          <button type="submit">Pay with Wallet</button>
+        </form>
+      </div>
+      <script>
+      document.getElementById('walletMethod').addEventListener('click', function() {
+        document.getElementById('walletForm').style.display = 'block';
+        window.scrollTo(0, document.body.scrollHeight);
+      });
+      </script>
+</body>
+</html>
