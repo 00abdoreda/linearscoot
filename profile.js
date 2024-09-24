@@ -928,3 +928,40 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 });
+
+document.querySelectorAll(".dropdown-toggle").forEach((item) => {
+  item.addEventListener("click", function (e) {
+    e.preventDefault();
+    const parentLi = this.parentElement;
+
+    // Close any other open dropdown
+    document.querySelectorAll(".dropdown").forEach((li) => {
+      if (li !== parentLi) {
+        li.classList.remove("open");
+      }
+    });
+
+    // Toggle the open class on the clicked dropdown
+    parentLi.classList.toggle("open");
+  });
+});
+document.querySelectorAll(".dropdown-toggle").forEach((item) => {
+  item.addEventListener("click", function (e) {
+    e.preventDefault();
+    const menu = this.nextElementSibling;
+
+    if (menu.style.display === "block") {
+      menu.style.opacity = "0";
+      menu.style.visibility = "hidden";
+      setTimeout(() => {
+        menu.style.display = "none";
+      }, 300);
+    } else {
+      menu.style.display = "block";
+      setTimeout(() => {
+        menu.style.opacity = "1";
+        menu.style.visibility = "visible";
+      }, 10);
+    }
+  });
+});

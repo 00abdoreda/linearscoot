@@ -798,7 +798,7 @@ body {
 }
 .scope-icon {
     position: absolute;
-    bottom: 20px;
+    bottom: 120px;
     right: 10px;
     background:  #ff8800;
     border: 2px solid #ccc;
@@ -814,7 +814,7 @@ body {
 } */
 #go-to-location{
     position: absolute;
-    bottom: 75px;
+    bottom: 65px;
     right: 10px;
     background:  #ff8800;
     border: 2px solid #ccc;
@@ -824,6 +824,29 @@ body {
     z-index: 10;  
 }
 
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  li {
+   margin: 5px 0;
+  }
+  
+  .dropdown-menu {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+    padding: 0;
+  
+  }
+  
+  .dropdown:hover .dropdown-menu {
+   max-height: 160px;
+   padding: 10px 0;
+  }
+  
 
 #menuButton {
     position: fixed;
