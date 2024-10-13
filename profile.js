@@ -286,37 +286,35 @@ function initMap() {
 
   //  allowedAreaParkingPolygon.setMap(map);
   const parkingLot1 = [
-
-    { lat: 29.426410, lng: 32.399978 },
+    { lat: 29.42641, lng: 32.399978 },
 
     { lat: 29.426488, lng: 32.400713 },
-    { lat:29.426903, lng: 32.400563},
+    { lat: 29.426903, lng: 32.400563 },
     { lat: 29.427231, lng: 32.400291 },
-     { lat: 29.427293, lng: 32.400004},
+    { lat: 29.427293, lng: 32.400004 },
   ];
 
   const parkingLot2 = [
-    {lat: 29.426952, lng: 32.404717},
-    {lat: 29.426972, lng: 32.404686},
-    {lat: 29.426954, lng: 32.404661},
-    {lat: 29.426995, lng: 32.404618},
-    {lat: 29.427023, lng: 32.404631},
-    {lat: 29.427043, lng: 32.404601},
-    {lat: 29.427380, lng: 32.404902},
-    {lat: 29.427360, lng: 32.404945},
-    {lat: 29.427431, lng: 32.405018},
-    {lat: 29.427463, lng: 32.404991},
-    {lat: 29.427579, lng: 32.405101},
-    {lat: 29.427493, lng: 32.405230},
-    {lat: 29.427162, lng: 32.404913},
-    {lat: 29.427181, lng: 32.404876},
-    {lat: 29.427162, lng: 32.404858},
-    {lat: 29.427103, lng: 32.404940},
-    {lat: 29.427103, lng: 32.404940},
-    {lat: 29.427103, lng: 32.404940},
-    {lat: 29.427103, lng: 32.404940},
-    {lat: 29.427103, lng: 32.404940}
-
+    { lat: 29.426952, lng: 32.404717 },
+    { lat: 29.426972, lng: 32.404686 },
+    { lat: 29.426954, lng: 32.404661 },
+    { lat: 29.426995, lng: 32.404618 },
+    { lat: 29.427023, lng: 32.404631 },
+    { lat: 29.427043, lng: 32.404601 },
+    { lat: 29.42738, lng: 32.404902 },
+    { lat: 29.42736, lng: 32.404945 },
+    { lat: 29.427431, lng: 32.405018 },
+    { lat: 29.427463, lng: 32.404991 },
+    { lat: 29.427579, lng: 32.405101 },
+    { lat: 29.427493, lng: 32.40523 },
+    { lat: 29.427162, lng: 32.404913 },
+    { lat: 29.427181, lng: 32.404876 },
+    { lat: 29.427162, lng: 32.404858 },
+    { lat: 29.427103, lng: 32.40494 },
+    { lat: 29.427103, lng: 32.40494 },
+    { lat: 29.427103, lng: 32.40494 },
+    { lat: 29.427103, lng: 32.40494 },
+    { lat: 29.427103, lng: 32.40494 },
   ];
 
   const parkingLot3 = [
@@ -383,47 +381,47 @@ function initMap() {
     { lat: 29.43313, lng: 32.398986 },
   ];
 
-   const parkingLot6 = [
-     { lat: 29.430983, lng: 32.3981544 },
-     { lat: 29.431111, lng: 32.398284 },
-     { lat: 29.431407, lng: 32.397898 },
-     { lat: 29.431386, lng: 32.397869 },
-     { lat: 29.431429, lng: 32.397791 },
-     { lat: 29.431404, lng: 32.39776 },
-     { lat: 29.43107, lng: 32.398154 },
-     { lat: 29.431011, lng: 32.398101 },
-   ];
-const parkingLot7 = [
-  { lat: 29.430334, lng: 32.399376 },
-  { lat: 29.430402, lng: 32.399376 },
-  { lat: 29.430392, lng: 32.399698 },
-  { lat: 29.430435, lng: 32.399721 },
-  { lat: 29.430438, lng: 32.399768 },
-  { lat: 29.430486, lng: 32.399768 },
-  { lat: 29.430542, lng: 32.399721 },
-  { lat: 29.43054, lng: 32.399127 },
-  { lat: 29.430441, lng: 32.399086 },
-  { lat: 29.430428, lng: 32.399271 },
-  { lat: 29.430318, lng: 32.3993 },
-];
-const parkingLot8 = [
-  { lat: 29.428022, lng: 32.402006 },
-  { lat: 29.428113, lng: 32.402109 },
-  { lat: 29.428044, lng: 32.402109 },
-  { lat: 29.427744, lng: 32.40258 },
-  { lat: 29.427777, lng: 32.402618 },
-  { lat: 29.427744, lng: 32.402676 },
-  { lat: 29.427861, lng: 32.402787 },
-  { lat: 29.427978, lng: 32.402784 },
-  { lat: 29.428039, lng: 32.402694 },
-  { lat: 29.428027, lng: 32.402626 },
-  { lat: 29.42834, lng: 32.402872 },
-  { lat: 29.428539, lng: 32.402568 },
-  { lat: 29.428521, lng: 32.402509 },
-  { lat: 29.428572, lng: 32.402527 },
-  { lat: 29.428602, lng: 32.40248 },
-  { lat: 29.428101, lng: 32.402012 },
-];
+  const parkingLot6 = [
+    { lat: 29.430983, lng: 32.3981544 },
+    { lat: 29.431111, lng: 32.398284 },
+    { lat: 29.431407, lng: 32.397898 },
+    { lat: 29.431386, lng: 32.397869 },
+    { lat: 29.431429, lng: 32.397791 },
+    { lat: 29.431404, lng: 32.39776 },
+    { lat: 29.43107, lng: 32.398154 },
+    { lat: 29.431011, lng: 32.398101 },
+  ];
+  const parkingLot7 = [
+    { lat: 29.430334, lng: 32.399376 },
+    { lat: 29.430402, lng: 32.399376 },
+    { lat: 29.430392, lng: 32.399698 },
+    { lat: 29.430435, lng: 32.399721 },
+    { lat: 29.430438, lng: 32.399768 },
+    { lat: 29.430486, lng: 32.399768 },
+    { lat: 29.430542, lng: 32.399721 },
+    { lat: 29.43054, lng: 32.399127 },
+    { lat: 29.430441, lng: 32.399086 },
+    { lat: 29.430428, lng: 32.399271 },
+    { lat: 29.430318, lng: 32.3993 },
+  ];
+  const parkingLot8 = [
+    { lat: 29.428022, lng: 32.402006 },
+    { lat: 29.428113, lng: 32.402109 },
+    { lat: 29.428044, lng: 32.402109 },
+    { lat: 29.427744, lng: 32.40258 },
+    { lat: 29.427777, lng: 32.402618 },
+    { lat: 29.427744, lng: 32.402676 },
+    { lat: 29.427861, lng: 32.402787 },
+    { lat: 29.427978, lng: 32.402784 },
+    { lat: 29.428039, lng: 32.402694 },
+    { lat: 29.428027, lng: 32.402626 },
+    { lat: 29.42834, lng: 32.402872 },
+    { lat: 29.428539, lng: 32.402568 },
+    { lat: 29.428521, lng: 32.402509 },
+    { lat: 29.428572, lng: 32.402527 },
+    { lat: 29.428602, lng: 32.40248 },
+    { lat: 29.428101, lng: 32.402012 },
+  ];
 
   // Create the polygons and set them on the map
   const parkingLots = [
@@ -486,15 +484,139 @@ const parkingLot8 = [
   redAreaPolygon.setMap(map);
 
   // Add scooter markers
-  const scooterPositions = [
-    { lat: 29.428219223091464, lng: 32.40387109222776 },
-    { lat: 29.42892940373553, lng: 32.40246561475691 },
 
-    { lat: 31.240078493874645, lng: 32.31710126613344 },
-    { lat: 29.431064909710784, lng: 32.40074072505988 },
-    { lat: 29.43146350009885, lng: 32.398714443512276 },
+  let scooters = [
+    {
+      id:"s1",
+      number: "S1",
+      lat: 29.428219223091464,
+      lng: 32.40387109222776,
+      lockStatus: "locked",
+    },
+    // {
+      
+    //   number: "S2",
+    //   lat: 29.42892940373553,
+    //   lng: 32.40246561475691,
+    //   lockStatus: "locked",
+    // },
+    // {
+      
+    //   number: "S3",
+    //   lat: 31.240078493874645,
+    //   lng: 32.31710126613344,
+    //   lockStatus: "locked",
+    // },
+    // {
+      
+    //   number: "S4",
+    //   lat: 29.431064909710784,
+    //   lng: 32.40074072505988,
+    //   lockStatus: "locked",
+    // },
+    // {
+    //   id:
+    //   number: "S5",
+    //   lat: 29.43146350009885,
+    //   lng: 32.398714443512276,
+    //   lockStatus: "locked",
+    // },
+    // // {
+    // //   id: 6,
+    // //   number: "S5",
+    // //   lat: 29.426679,
+    // //   lng: 32.40053,
+    // //   lockStatus: "locked",
+    // // },
   ];
 
+  // scooterPositions.forEach((position, index) => {
+  //   const scooterMarker = new google.maps.Marker({
+  //     position: position,
+  //     map: map,
+  //     icon: {
+  //       url: "../liner scoot/imgs/Liner scoot scooter.png",
+  //       scaledSize: new google.maps.Size(50, 50),
+  //     },
+  //     title: "Scooter Available",
+  //   });
+  //   // Add click listener for scooter markers
+  //   scooterMarker.addListener("click", () => {
+  //     // Check if the same marker is clicked again
+  //     if (lastClickedMarker === scooterMarker) {
+  //       // Hide the details and remove the line
+  //       hideScooterDetails();
+  //       removeLastPolyline();
+  //       lastClickedMarker = null;
+  //     } else {
+  //       // New marker clicked
+  //       // Remove the previous line and details
+  //       removeLastPolyline();
+  //       hideScooterDetails();
+  //       if (userLocation) {
+  //         const distance = calculateDistance(userLocation, position);
+  //         const walkingSpeed = 5; // km/h
+  //         const timeToReach = (distance / walkingSpeed) * 60; // minutes
+
+  //         lastPolyline = drawLineToScooter(userLocation, position);
+  //         displayScooterDetailsWithDistance(index, distance, timeToReach);
+  //       } else {
+  //         alert("User location not available.");
+  //       }
+  //       lastClickedMarker = scooterMarker; // Update the last clicked
+  //     }
+  //   });
+  //   scooterMarkers.push(scooterMarker);
+  // });
+  const scooterPositions = scooters.map((scooter) => ({
+    lat: scooter.lat,
+    lng: scooter.lng,
+  }));
+  // Function to add a new scooter position
+  function addScooterPosition(scooterData) {
+    const position = {
+      lat: parseFloat(scooterData.lat),
+      lng: parseFloat(scooterData.lng),
+    };
+    scooterPositions.push(position);
+    scooters.push(scooterData);
+
+    const scooterMarker = new google.maps.Marker({
+      position: position,
+      map: map,
+      icon: {
+        url: "../liner scoot/imgs/Liner scoot scooter.png",
+        scaledSize: new google.maps.Size(50, 50),
+      },
+      title: "Scooter Available",
+    });
+
+    scooterMarker.addListener("click", () => {
+      if (lastClickedMarker === scooterMarker) {
+        hideScooterDetails();
+        removeLastPolyline();
+        lastClickedMarker = null;
+      } else {
+        removeLastPolyline();
+        hideScooterDetails();
+        if (userLocation) {
+          const distance = calculateDistance(userLocation, position);
+          const walkingSpeed = 5; // km/h
+          const timeToReach = (distance / walkingSpeed) * 60; // minutes
+
+          lastPolyline = drawLineToScooter(userLocation, position);
+          displayScooterDetailsWithDistance(scooterData, distance, timeToReach);
+        } else {
+          alert("User location not available.");
+        }
+        lastClickedMarker = scooterMarker;
+      }
+    });
+
+    scooterMarkers.push(scooterMarker);
+  }
+
+  // Initial markers
   scooterPositions.forEach((position, index) => {
     const scooterMarker = new google.maps.Marker({
       position: position,
@@ -505,17 +627,13 @@ const parkingLot8 = [
       },
       title: "Scooter Available",
     });
-    // Add click listener for scooter markers
+
     scooterMarker.addListener("click", () => {
-      // Check if the same marker is clicked again
       if (lastClickedMarker === scooterMarker) {
-        // Hide the details and remove the line
         hideScooterDetails();
         removeLastPolyline();
         lastClickedMarker = null;
       } else {
-        // New marker clicked
-        // Remove the previous line and details
         removeLastPolyline();
         hideScooterDetails();
         if (userLocation) {
@@ -524,15 +642,62 @@ const parkingLot8 = [
           const timeToReach = (distance / walkingSpeed) * 60; // minutes
 
           lastPolyline = drawLineToScooter(userLocation, position);
-          displayScooterDetailsWithDistance(index, distance, timeToReach);
+          displayScooterDetailsWithDistance(
+            scooters[index],
+            distance,
+            timeToReach
+          );
         } else {
           alert("User location not available.");
         }
-        lastClickedMarker = scooterMarker; // Update the last clicked
+        lastClickedMarker = scooterMarker;
       }
     });
+
     scooterMarkers.push(scooterMarker);
   });
+
+  const newScooterData = localStorage.getItem("newScooter");
+  if (newScooterData) {
+    const scooterData = JSON.parse(newScooterData);
+    // scooterData.id = scooters.length + 1; // Assign a new ID
+    addScooterPosition(scooterData);
+    localStorage.removeItem("newScooter"); // Clear the data from local storage
+  }
+
+
+  // // Example functions to calculate distance and time
+  // function calculateDistance(location1, location2) {
+  //   // Implement your distance calculation logic here
+  //   return 1.5; // Example distance in km
+  // }
+
+  // // Function to calculate distance
+  // function calculateDistance(start, end) {
+  //   const R = 6371; // Radius of the Earth in km
+  //   const dLat = (end.lat - start.lat) * (Math.PI / 180);
+  //   const dLng = (end.lng - start.lng) * (Math.PI / 180);
+  //   const a =
+  //     Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+  //     Math.cos(start.lat * (Math.PI / 180)) *
+  //       Math.cos(end.lat * (Math.PI / 180)) *
+  //       Math.sin(dLng / 2) *
+  //       Math.sin(dLng / 2);
+  //   const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+  //   const distance = R * c; // Distance in km
+  //   return distance;
+  // }
+
+  // function calculateTimeToReach(distance) {
+  //   // Implement your time calculation logic here
+  //   return distance / 0.05; // Example time in minutes (assuming 3 km/h speed)
+  // }
+
+  // Function to calculate time to reach
+  function calculateTimeToReach(distance) {
+    const walkingSpeed = 5; // km/h
+    return (distance / walkingSpeed) * 60; // minutes
+  }
 
   // Add parking spot markers
   const parkingPositions = [
@@ -548,7 +713,6 @@ const parkingLot8 = [
     { lat: 29.43128630291147, lng: 32.401096898520706 },
     { lat: 29.433037348262644, lng: 32.39890488040191 },
     { lat: 29.42682743876561, lng: 32.40027280699874 },
-    
   ];
 
   parkingPositions.forEach((position) => {
@@ -684,16 +848,44 @@ const parkingLot8 = [
       lastPolyline = null;
     }
   }
-  function displayScooterDetailsWithDistance(index, distance, timeToReach) {
-    const scooterDetails = document.getElementById("scooterClick");
-    scooterDetails.style.display = "block";
-    document.querySelector(".scooter-id").innerText = "SCOOT ID: " + index;
-    document.querySelector(".status").innerText = "UNLOCKED";
-    document.querySelector(".battery-bar").style.width = "80%";
-    document.querySelector(".distance").innerText =
-      "Distance: " + distance.toFixed(2) + " km";
-    document.querySelector(".time").innerText =
-      "Time: " + timeToReach.toFixed(0) + " min";
+  // function displayScooterDetailsWithDistance(
+  //   scooterData,
+  //   distance,
+  //   timeToReach
+  // ) {
+  //   const scooterDetails = document.getElementById("scooterClick");
+  //   scooterDetails.style.display = "block";
+  //   document.querySelector(".scooter-id").innerText =
+  //     "SCOOT ID: " + scooterData.id;
+  //   document.querySelector(".status").innerText =
+  //     scooterData.lockStatus.toUpperCase();
+  //   document.querySelector(".battery-bar").style.width = "80%";
+  //   document.querySelector(".distance").innerText =
+  //     "Distance: " + distance.toFixed(2) + " km";
+  //   document.querySelector(".time").innerText =
+  //     "Time: " + timeToReach.toFixed(0) + " min";
+  // }
+
+
+  function displayScooterDetailsWithDistance(
+    scooterData,
+    distance,
+    timeToReach
+  ) {
+    const scooterDetailsContainer = document.getElementById("scooterClick");
+    scooterDetailsContainer.style.display = "block";
+
+    const scooterDetailsHTML = `
+        <div class="scooter-id">SCOOT ID: ${scooterData.id}</div>
+        <img src="${scooterData.photo}" alt="Scooter" class="scooter-image">
+        <div class="scooter-status">
+            <span class="status">${scooterData.lockStatus.toUpperCase()}</span>
+            <div class="time">Time: ${timeToReach.toFixed(0)} min</div>
+            <div class="distance">Distance: ${distance.toFixed(2)} km</div>
+        </div>
+    `;
+
+    scooterDetailsContainer.innerHTML = scooterDetailsHTML;
   }
 
   function updateLightCone(heading, pos) {
@@ -807,6 +999,7 @@ document.getElementById("agreeButton").addEventListener("click", function () {
   scanner.render(onScanSuccess, onScanError);
 
   function onScanSuccess(decodedText) {
+      
     displayScooterDetails(decodedText);
     // Hide the reader after a successful scan
     document.getElementById("reader").style.display = "none";
@@ -818,6 +1011,50 @@ document.getElementById("agreeButton").addEventListener("click", function () {
     // Show the manual code entry if an error occurs
     document.getElementById("manualCodeEntry").style.display = "block";
   }
+// document.addEventListener("DOMContentLoaded", function () {
+//   document
+//     .getElementById("submitCodeButton")
+//     .addEventListener("click", function () {
+//       const scooterCode = document.getElementById("manualCode").value;
+//       const currentBalance =
+//         document.getElementById("currentBalance").textContent;
+//       localStorage.setItem("scooterCode", scooterCode);
+//       localStorage.setItem("currentBalance", currentBalance);
+//       window.location.href = "MyScooter.html";
+//     });
+// //
+//   document
+//     .getElementById("scanQRButton")
+//     .addEventListener("click", function () {
+//       const html5QrCode = new Html5Qrcode("reader");
+//       html5QrCode
+//         .start(
+//           { facingMode: "environment" }, // Use rear camera
+//           {
+//             fps: 10, // Scans per second
+//             qrbox: { width: 250, height: 250 }, // QR code scanning box
+//           },
+//           (qrCodeMessage) => {
+//             // Handle the scanned code
+//             const scooterCode = qrCodeMessage;
+//             const currentBalance =
+//               document.getElementById("currentBalance").textContent;
+//             localStorage.setItem("scooterCode", scooterCode);
+//             localStorage.setItem("currentBalance", currentBalance);
+//             window.location.href = "MyScooter.html";
+//           },
+//           (errorMessage) => {
+//             // Handle scan error
+//             console.log(`QR Code no longer in front of camera.`);
+//           }
+//         )
+//         .catch((err) => {
+//           // Start failed, handle it
+//           console.error(`Unable to start scanning, error: ${err}`);
+//         });
+//     });
+// });
+//
 
   const requestCameraButton = document.querySelector(".html5-qrcode-element ");
 
@@ -857,12 +1094,31 @@ document
     }
   });
 
-function displayScooterDetails(code) {
-  document.getElementById("scooterDetails").style.display = "block";
-  document.querySelector(".scooter-id").innerText = "SCOOT ID: " + code;
-  document.querySelector(".status").innerText = "UNLOCKED";
-  document.querySelector(".battery-bar").style.width = "80%";
-}
+// function displayScooterDetails(code) {
+//   document.getElementById("scooterDetails").style.display = "block";
+//   document.querySelector(".scooter-id").innerText = "SCOOT ID: " + code;
+//   document.querySelector(".status").innerText = "LOCKED"; 
+//   document.querySelector(".battery-bar").style.width = "80%";
+// }
+
+   function displayScooterDetails(scooterCode, currentBalance) {
+      document.querySelector(".scooter-id").innerText =
+        "SCOOT ID: " + scooterCode; 
+     document.getElementById("scooter-image").src =
+       "../liner scoot/imgs/Good-Quality-Yellow-Black-Electric-Scooter-for-Sale.jpg";
+     document.getElementById("scooterDetails").style.display = "block";
+     document.getElementById("newScooterDetails").style.display =
+       "none";
+
+     document
+       .getElementById("startRideButton")
+       .addEventListener("click", function () {
+         document.getElementById("newScooterId").textContent = scooterCode;
+         document.getElementById("newScooterDetails").style.display = "block";
+         document.getElementById("scooterDetails").style.display = "none";
+       });
+   }
+
 
 // Sidebar and Menu toggle
 document.getElementById("menuButton").addEventListener("click", function () {
@@ -965,3 +1221,4 @@ document.querySelectorAll(".dropdown-toggle").forEach((item) => {
     }
   });
 });
+

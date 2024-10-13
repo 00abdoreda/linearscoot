@@ -184,6 +184,56 @@
       top: 15px;
       right: 15px;
     }
+ 
+  /* Modal Styles */
+  .modal {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgb(0,0,0);
+      background-color: rgba(0,0,0,0.4);
+      padding-top: 60px;
+    }
+
+    .modal-content {
+      background-color: #fefefe;
+      margin: 70% auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%;
+      max-width: 400px;
+      text-align: center;
+      border-radius: 10px;
+      position: relative;
+    }
+
+    .close {
+      color: #ff6f00;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      opacity: 1;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: #ff6f00;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .checkmark {
+      font-size: 50px;
+      color: green;
+    }
 
     /* Responsive Design */
     @media (max-width: 600px) {
@@ -233,6 +283,7 @@
       <div class="form-check">
         <input type="radio" id="creditCard" name="paymentMethod" value="Credit or Debit Card" onclick="customizeForm('creditCard')">
         <label for="creditCard">Credit or Debit Card</label>
+        
       </div>
       <div class="form-check">
         <input type="radio" id="wallet" name="paymentMethod" value="Wallet" onclick="customizeForm('wallet')">
@@ -252,6 +303,15 @@
       <button type="button" class="previous-btn" onclick="goBackToPaymentMethods()">Back</button>
       <button type="submit" class="pay-btn" id="payBtn">Pay</button>
     </form>
+  </div>
+</div>
+
+<!-- Modal -->
+<div id="paymentModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <div class="checkmark">✔</div>
+    <h2 style="color: #e65b00;">Payment Successful!</h2>
   </div>
 </div>
 
@@ -305,6 +365,8 @@
           <label for="cvv">CVV:</label>
           <input type="text" id="cvv" name="cvv" placeholder="Enter your CVV">
           <span class="error-message" id="errorCvv"></span>
+           <label for="amountCreditCard">Amount:</label>
+          <input type="number" id="amountCreditCard" name="amountCreditCard" placeholder="Enter amount">
         `;
         payBtnText += 'Card';
         break;
@@ -317,6 +379,8 @@
           <label for="pinCode">PIN Code:</label>
           <input type="text" id="pinCode" name="pinCode" placeholder="Enter your PIN code">
           <span class="error-message" id="errorPinCode"></span>
+            <label for="amountWallet">Amount:</label>
+          <input type="number" id="amountWallet" name="amountWallet" placeholder="Enter amount">
         `;
         payBtnText += 'Wallet';
         break;
@@ -326,6 +390,8 @@
           <label for="email">PayPal Email:</label>
           <input type="email" id="email" name="email" placeholder="Enter your PayPal email">
           <span class="error-message" id="errorEmail"></span>
+             <label for="amountPayPal">Amount:</label>
+          <input type="number" id="amountPayPal" name="amountPayPal" placeholder="Enter amount">
         `;
         payBtnText += 'PayPal';
         break;
@@ -353,7 +419,40 @@
     }
 
     if (valid) {
-      alert('Payment Successful!');
+      document.getElementById('paymentModal').style.display = 'block';
+      let amount;
+      switch (document.querySelector('input[name="paymentMethod"]:checked').value) {
+        case 'Credit or Debit Card':
+          amount = parseFloat(document.getElementById('amountCreditCard').value);
+          break;
+        case 'Wallet':
+          amount = parseFloat(document.getElementById('amountWallet').value);
+          break;
+        case 'PayPal':
+          amount = parseFloat(document.getElementById('amountPayPal').value);
+          break;
+      }
+      const currentBalance = parseFloat(localStorage.getItem('balanceAmount') || '0');
+      const newBalance = currentBalance + amount;
+      localStorage.setItem('balanceAmount', newBalance.toFixed(2));
+      document.getElementById('walletAmount').innerText = `${newBalance.toFixed(2)} EGP`;
+
+      document.getElementById('detailsForm').reset();
+    }
+  });
+
+   // Close the modal
+   function closeModal() {
+    document.getElementById('paymentModal').style.display = 'none';
+    document.getElementById('detailsForm').reset();
+  }
+
+   // Load the balance from localStorage
+   document.addEventListener('DOMContentLoaded', function() {
+    const walletAmountElement = document.getElementById('walletAmount');
+    const storedBalance = localStorage.getItem('balanceAmount');
+    if (storedBalance) {
+      walletAmountElement.innerText = `${storedBalance} EGP`;
     }
   });
 </script>

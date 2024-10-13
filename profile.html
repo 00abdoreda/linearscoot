@@ -35,13 +35,13 @@
 </div>
         <!-- Manual Code Entry -->
 
-        <!-- <div id="manualCodeEntry" style="display: none;">
+        <div id="manualCodeEntry" style="display: none;">
             
             <label id="scooterIdLabel" >Enter Scooter ID:</label>
             <input type="text" id="manualCode" placeholder="Enter Scooter ID">
             <button id="submitCodeButton">Ride Now</button>
             <div class="or">Or</div>
-        </div> -->
+        </div>
 
         <!-- Terms and Conditions Modal -->
 <div id="termsModal" class="modal">
@@ -68,10 +68,11 @@
             <img src="../liner scoot/imgs/WhatsApp Image 2023-02-14 at 18.53.00.jpg" alt="Profile Picture" id="profilePic">
            <button id="upload-button" class="upload-button">+</button>
             <span id="profileName">Abdelrahman shaban</span>
-            <div class="balance">60.00 EGP</div>
+            <div class="balance" id="ProfileBalance">60.00 EGP</div>
         </div>
         <ul>
             <li ><a href="profile.html">My Profile</a></li>
+            <li ><a href="MyScooter.html">My Scooter</a></li>
             <li class="active" ><a href="history.html">History</a></li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle">Pricing</a>
@@ -102,16 +103,26 @@
 <div id="balanceContainer" class="balance-container">
    <div class="mybala"> My balance</div>
     <!-- <img src="../liner scoot/imgs/logo withoutbg.png" class="balalogo" alt=""> -->
-    <span class="balance-text">60.00<sub>EGP</sub></span>
+    <span class="balance-text" id="currentBalance">60.00<sub>EGP</sub></span>
     
 </div>
 <a href="checkout.html"><span class="pluss">+</span></a>
+   <!-- New Scooter Details Container -->
+   <div id="scooterDetails" class="scooter-details" style="display:none;">
+    <div class="scooter-id">SCOOT ID: <span id="newScooterId"></span></div>
+    <img src="../liner scoot/imgs/Good-Quality-Yellow-Black-Electric-Scooter-for-Sale.jpg" alt="Scooter" class="scooter-image" id="newScooterPhoto" >
+    <div class="scooter-status">
+        <span class="status">LOCKED</span>
+        <p>Min amount to start is <span style="color: red;">30 EGP</span></p>
+        <button id="startRideButton" class="btn btn-warning" style="background-color: rgb(255 149 7);">Start Ride &rarr;</button>
+    </div>
+</div>
     <!-- Scooter Details Container -->
-    <div id="scooterDetails" class="scooter-details" style="display:none;">
-        <div class="scooter-id">SCOOT ID: 7382234</div>
-        <img src="../liner scoot/imgs/Good-Quality-Yellow-Black-Electric-Scooter-for-Sale.jpg" alt="Scooter" class="scooter-image">
+    <div id="newScooterDetails" class="scooter-details" style="display:none;">
+        <div class="scooter-id">SCOOT ID: <span id="newScooterId"></span></div>
+        <img src="../liner scoot/imgs/Good-Quality-Yellow-Black-Electric-Scooter-for-Sale.jpg" alt="Scooter" class="scooter-image" id="scooter-image">
         <div class="scooter-status">
-            <span class="status">LOCKED</span> <!-- or UNLOCKED -->
+            <span class="status">UNLOCKED</span> <!-- or UNLOCKED -->
             <div class="battery-status">
                 <div class="battery-bar" style="width: 80%;">80%</div>
             </div>
@@ -120,14 +131,14 @@
     </div>
     <!-- details click -->
     <div id="scooterClick" class="scooter-details" style="display:none;">
-        <div class="scooter-id">SCOOT ID: 7382234</div>
+        <!-- <div class="scooter-id">SCOOT ID:</div>
         <img src="../liner scoot/imgs/Good-Quality-Yellow-Black-Electric-Scooter-for-Sale.jpg" alt="Scooter" class="scooter-image">
         <div class="scooter-status">
-            <span class="status">LOCKED</span> <!-- or UNLOCKED -->
+            <span class="status">LOCKED</span> 
           
             <div class="time"></div>
             <div class="distance"></div>
-        </div>
+        </div> -->
     </div>
 
 
@@ -140,5 +151,26 @@
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDw69XhDXcaJOkdSHhzpaNuaeIbJ8rr9lg&loading=async&libraries=maps,marker&v=beta" async defer>
     </script> -->
     <script src="profile.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentBalanceElement = document.getElementById('currentBalance');
+
+            // Load the balance from localStorage
+            const storedBalance = localStorage.getItem('balanceAmount');
+            if (storedBalance) {
+                currentBalanceElement.innerHTML = `${storedBalance}<sub>EGP</sub>`;
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentBalanceElement = document.getElementById('ProfileBalance');
+
+            // Load the balance from localStorage
+            const storedBalance = localStorage.getItem('balanceAmount');
+            if (storedBalance) {
+                currentBalanceElement.innerHTML = `${storedBalance}<sub>EGP</sub>`;
+            }
+        });
+    </script>
 </body>
 </html>
