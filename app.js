@@ -116,14 +116,14 @@ document
     }
   });
 
-  const video = document.getElementById("video");
+const video = document.getElementById("video");
 
-  video.addEventListener("ended", function () {
-    if (video.currentTime >= video.duration - 0.3) {
-      video.currentTime = 0; // Rewind to the beginning just before the black frame
-      video.play();
-    }
-  });
+video.addEventListener("ended", function () {
+  if (video.currentTime >= video.duration - 0.3) {
+    video.currentTime = 0; // Rewind to the beginning just before the black frame
+    video.play();
+  }
+});
 window.addEventListener("load", () => {
   const loader = document.querySelector(".loader");
   setTimeout(() => {
@@ -134,4 +134,109 @@ window.addEventListener("load", () => {
     loader.remove();
   });
 });
+
+document.getElementById("createacc").addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const formdata = new FormData(document.getElementById("createacc"));
+  try {
+    const response = await fetch("http://192.168.1.12:3001/api/user/signup", {
+      method: "POST",
+      body: formdata,
+    });
+    if (response.ok) {
+      container.classList.remove("sign-up-mode");
+    } else {
+      alert("error");
+    }
+  } catch (error) {
+    alert("error");
+  }
+});
+
+
+
+// Function to check if the data is expired
+ // Function to encrypt data
+  function encryptData(data, secretKey) {
+    return CryptoJS.AES.encrypt(JSON.stringify(data), secretKey).toString();
+  }
+
+  // Function to decrypt data
+  function decryptData(encryptedData, secretKey) {
+    const bytes = CryptoJS.AES.decrypt(encryptedData, secretKey);
+    return JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
+  }
+
+  // Function to set data in localStorage with expiration
+  function setDataWithExpiration(key, data, hours, secretKey) {
+    const expirationTime = Date.now() + hours * 60 * 60 * 1000; // Calculate expiration time
+    const encryptedData = encryptData(data, secretKey);
+    const dataWithExpiration = { encryptedData, expiration: expirationTime };
+    localStorage.setItem(key, JSON.stringify(dataWithExpiration)); // Store data with expiration
+  }
+
+  // Function to get data from localStorage and check expiration
+  function getDataWithExpiration(key, secretKey) {
+    const storedData = localStorage.getItem(key);
+    if (!storedData) return null; // No data found
+
+    const { encryptedData, expiration } = JSON.parse(storedData);
+    if (Date.now() > expiration) {
+      localStorage.removeItem(key); // Remove expired data
+      return null; // Data is expired
+    }
+    return decryptData(encryptedData, secretKey); // Decrypt and return valid data
+  }
+
+  // Event listener for form submission
+  document.getElementById("loginform").addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const formdata = {
+      email: document.getElementById("loginform").email.value,
+      password: document.getElementById("loginform").password.value,
+    };
+
+    console.log(formdata); // Log the formdata object
+
+    try {
+      const response = await fetch("http://192.168.1.12:3001/api/user/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json", // Set the content type
+        },
+        body: JSON.stringify(formdata), // Convert formdata to JSON
+      });
+
+      if (response.ok) {
+        const jsonResponse = await response.json(); // Await the JSON response
+        console.log("Success:", jsonResponse); // Log the successful response
+
+        const secretKey = "jnvmnjofmcivneirp"; // Define your secret key
+        setDataWithExpiration("userData", jsonResponse, 20, secretKey);
+        window.location.href = "/profile.html";
+        // Store user data with expiration
+      } else {
+        const errorResponse = await response.json(); // Await the error response
+        console.error("Error:", errorResponse); // Log the error response
+        alert(errorResponse.error || 'An error occurred'); // Handle the error message
+      }
+    } catch (error) {
+      console.error("Fetch error:", error); // Log the error for debugging
+      alert(error.message || 'An error occurred'); // Handle the catch block
+    }
+  });
+
+  // Example usage to retrieve and decrypt data
+  // const secretKey = "jnvmnjofmcivneirp"; // Use the same secret key for decryption
+  // const storedData = getDataWithExpiration("userData", secretKey);
+
+  // if (storedData) {
+  //   console.log("Valid User Data:", storedData);
+  // } else {
+  //   console.log("No valid user data found or data is expired.");
+  // }
+
+
+// // Example usage to check expiration
 

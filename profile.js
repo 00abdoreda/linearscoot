@@ -5,6 +5,40 @@ let userLocation;
 let scooterMarkers = [];
 let lastClickedMarker = null;
 let lastPolyline = null;
+// Function to decrypt data
+function decryptData(encryptedData, secretKey) {
+  const bytes = CryptoJS.AES.decrypt(encryptedData, secretKey);
+  return JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
+}
+
+// Function to set data in localStorage with expiration
+function getDataWithExpiration(key, secretKey) {
+  const storedData = localStorage.getItem(key);
+  if (!storedData) return null; // No data found
+
+  const { encryptedData, expiration } = JSON.parse(storedData);
+  if (Date.now() > expiration) {
+    localStorage.removeItem(key); // Remove expired data
+    return null; // Data is expired
+  }
+  return decryptData(encryptedData, secretKey); // Decrypt and return valid data
+}
+const secretKey = "jnvmnjofmcivneirp"; // Use the same secret key for decryption
+const storedData = getDataWithExpiration("userData", secretKey);
+
+if (storedData) {
+  console.log("Valid User Data:", storedData);
+  document.getElementById("profileName").innerText =
+    storedData.data.user.fullname;
+  document.getElementById(
+    "ProfileBalance"
+  ).innerText = `${storedData.data.user.wallet} EGP`;
+  document.getElementById(
+    "currentBalance"
+  ).innerText = `${storedData.data.user.wallet} EGP`;
+} else {
+  window.location.href = "/login.html";
+}
 function initMap() {
   const allowedAreaCoords = [
     // { lat: 29.43416116753383, lng: 32.398229305394274 }, //clockwise
@@ -487,28 +521,28 @@ function initMap() {
 
   let scooters = [
     {
-      id:"s1",
+      id: "s1",
       number: "S1",
       lat: 29.428219223091464,
       lng: 32.40387109222776,
       lockStatus: "locked",
     },
     // {
-      
+
     //   number: "S2",
     //   lat: 29.42892940373553,
     //   lng: 32.40246561475691,
     //   lockStatus: "locked",
     // },
     // {
-      
+
     //   number: "S3",
     //   lat: 31.240078493874645,
     //   lng: 32.31710126613344,
     //   lockStatus: "locked",
     // },
     // {
-      
+
     //   number: "S4",
     //   lat: 29.431064909710784,
     //   lng: 32.40074072505988,
@@ -664,7 +698,6 @@ function initMap() {
     addScooterPosition(scooterData);
     localStorage.removeItem("newScooter"); // Clear the data from local storage
   }
-
 
   // // Example functions to calculate distance and time
   // function calculateDistance(location1, location2) {
@@ -866,7 +899,6 @@ function initMap() {
   //     "Time: " + timeToReach.toFixed(0) + " min";
   // }
 
-
   function displayScooterDetailsWithDistance(
     scooterData,
     distance,
@@ -999,7 +1031,6 @@ document.getElementById("agreeButton").addEventListener("click", function () {
   scanner.render(onScanSuccess, onScanError);
 
   function onScanSuccess(decodedText) {
-      
     displayScooterDetails(decodedText);
     // Hide the reader after a successful scan
     document.getElementById("reader").style.display = "none";
@@ -1011,50 +1042,50 @@ document.getElementById("agreeButton").addEventListener("click", function () {
     // Show the manual code entry if an error occurs
     document.getElementById("manualCodeEntry").style.display = "block";
   }
-// document.addEventListener("DOMContentLoaded", function () {
-//   document
-//     .getElementById("submitCodeButton")
-//     .addEventListener("click", function () {
-//       const scooterCode = document.getElementById("manualCode").value;
-//       const currentBalance =
-//         document.getElementById("currentBalance").textContent;
-//       localStorage.setItem("scooterCode", scooterCode);
-//       localStorage.setItem("currentBalance", currentBalance);
-//       window.location.href = "MyScooter.html";
-//     });
-// //
-//   document
-//     .getElementById("scanQRButton")
-//     .addEventListener("click", function () {
-//       const html5QrCode = new Html5Qrcode("reader");
-//       html5QrCode
-//         .start(
-//           { facingMode: "environment" }, // Use rear camera
-//           {
-//             fps: 10, // Scans per second
-//             qrbox: { width: 250, height: 250 }, // QR code scanning box
-//           },
-//           (qrCodeMessage) => {
-//             // Handle the scanned code
-//             const scooterCode = qrCodeMessage;
-//             const currentBalance =
-//               document.getElementById("currentBalance").textContent;
-//             localStorage.setItem("scooterCode", scooterCode);
-//             localStorage.setItem("currentBalance", currentBalance);
-//             window.location.href = "MyScooter.html";
-//           },
-//           (errorMessage) => {
-//             // Handle scan error
-//             console.log(`QR Code no longer in front of camera.`);
-//           }
-//         )
-//         .catch((err) => {
-//           // Start failed, handle it
-//           console.error(`Unable to start scanning, error: ${err}`);
-//         });
-//     });
-// });
-//
+  // document.addEventListener("DOMContentLoaded", function () {
+  //   document
+  //     .getElementById("submitCodeButton")
+  //     .addEventListener("click", function () {
+  //       const scooterCode = document.getElementById("manualCode").value;
+  //       const currentBalance =
+  //         document.getElementById("currentBalance").textContent;
+  //       localStorage.setItem("scooterCode", scooterCode);
+  //       localStorage.setItem("currentBalance", currentBalance);
+  //       window.location.href = "MyScooter.html";
+  //     });
+  // //
+  //   document
+  //     .getElementById("scanQRButton")
+  //     .addEventListener("click", function () {
+  //       const html5QrCode = new Html5Qrcode("reader");
+  //       html5QrCode
+  //         .start(
+  //           { facingMode: "environment" }, // Use rear camera
+  //           {
+  //             fps: 10, // Scans per second
+  //             qrbox: { width: 250, height: 250 }, // QR code scanning box
+  //           },
+  //           (qrCodeMessage) => {
+  //             // Handle the scanned code
+  //             const scooterCode = qrCodeMessage;
+  //             const currentBalance =
+  //               document.getElementById("currentBalance").textContent;
+  //             localStorage.setItem("scooterCode", scooterCode);
+  //             localStorage.setItem("currentBalance", currentBalance);
+  //             window.location.href = "MyScooter.html";
+  //           },
+  //           (errorMessage) => {
+  //             // Handle scan error
+  //             console.log(`QR Code no longer in front of camera.`);
+  //           }
+  //         )
+  //         .catch((err) => {
+  //           // Start failed, handle it
+  //           console.error(`Unable to start scanning, error: ${err}`);
+  //         });
+  //     });
+  // });
+  //
 
   const requestCameraButton = document.querySelector(".html5-qrcode-element ");
 
@@ -1097,28 +1128,25 @@ document
 // function displayScooterDetails(code) {
 //   document.getElementById("scooterDetails").style.display = "block";
 //   document.querySelector(".scooter-id").innerText = "SCOOT ID: " + code;
-//   document.querySelector(".status").innerText = "LOCKED"; 
+//   document.querySelector(".status").innerText = "LOCKED";
 //   document.querySelector(".battery-bar").style.width = "80%";
 // }
 
-   function displayScooterDetails(scooterCode, currentBalance) {
-      document.querySelector(".scooter-id").innerText =
-        "SCOOT ID: " + scooterCode; 
-     document.getElementById("scooter-image").src =
-       "../liner scoot/imgs/Good-Quality-Yellow-Black-Electric-Scooter-for-Sale.jpg";
-     document.getElementById("scooterDetails").style.display = "block";
-     document.getElementById("newScooterDetails").style.display =
-       "none";
+function displayScooterDetails(scooterCode, currentBalance) {
+  document.querySelector(".scooter-id").innerText = "SCOOT ID: " + scooterCode;
+  document.getElementById("scooter-image").src =
+    "../liner scoot/imgs/Good-Quality-Yellow-Black-Electric-Scooter-for-Sale.jpg";
+  document.getElementById("scooterDetails").style.display = "block";
+  document.getElementById("newScooterDetails").style.display = "none";
 
-     document
-       .getElementById("startRideButton")
-       .addEventListener("click", function () {
-         document.getElementById("newScooterId").textContent = scooterCode;
-         document.getElementById("newScooterDetails").style.display = "block";
-         document.getElementById("scooterDetails").style.display = "none";
-       });
-   }
-
+  document
+    .getElementById("startRideButton")
+    .addEventListener("click", function () {
+      document.getElementById("newScooterId").textContent = scooterCode;
+      document.getElementById("newScooterDetails").style.display = "block";
+      document.getElementById("scooterDetails").style.display = "none";
+    });
+}
 
 // Sidebar and Menu toggle
 document.getElementById("menuButton").addEventListener("click", function () {
@@ -1222,3 +1250,7 @@ document.querySelectorAll(".dropdown-toggle").forEach((item) => {
   });
 });
 
+function logout() {
+  localStorage.removeItem("userData"); 
+  window.location.href = "/login.html"; 
+}

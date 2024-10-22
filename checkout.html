@@ -316,8 +316,39 @@
 </div>
 
 <button class="menu-btn" id="hamburgerIcon" onclick="toggleMenu()">☰</button>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
 <script>
+// Function to decrypt data
+function decryptData(encryptedData, secretKey) {
+  const bytes = CryptoJS.AES.decrypt(encryptedData, secretKey);
+  return JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
+}
+
+// Function to set data in localStorage with expiration
+function getDataWithExpiration(key, secretKey) {
+  const storedData = localStorage.getItem(key);
+  if (!storedData) return null; // No data found
+
+  const { encryptedData, expiration } = JSON.parse(storedData);
+  if (Date.now() > expiration) {
+    localStorage.removeItem(key); // Remove expired data
+    return null; // Data is expired
+  }
+  return decryptData(encryptedData, secretKey); // Decrypt and return valid data
+}
+const secretKey = "jnvmnjofmcivneirp"; // Use the same secret key for decryption
+const storedData = getDataWithExpiration("userData", secretKey);
+
+if (storedData) {
+  console.log("Valid User Data:", storedData);
+  
+  document.getElementById(
+    "walletAmount"
+  ).innerText = `${storedData.data.user.wallet} EGP`;
+} else {
+  window.location.href = "/login.html";
+}
+
   let menuOpen = false;
 
   // Show payment options and move the header up
