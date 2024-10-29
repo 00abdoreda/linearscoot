@@ -33,9 +33,15 @@ if (storedData) {
   document.getElementById(
     "ProfileBalance"
   ).innerText = `${storedData.data.user.wallet} EGP`;
+  // document.getElementById(
+  //   "ProfileBalance"
+  // ).innerText = `50 EGP`;
   document.getElementById(
     "currentBalance"
   ).innerText = `${storedData.data.user.wallet} EGP`;
+  // document.getElementById(
+  //   "currentBalance"
+  // ).innerText = `50 EGP`;
 } else {
   window.location.href = "/login.html";
 }
@@ -962,7 +968,7 @@ window.initMap = initMap;
 // Load the Google Maps API asynchronously and then call initMap
 function loadGoogleMapsScript() {
   const script = document.createElement("script");
-  script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&callback=initMap`;
+  script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyD26fVBtlyRntHRuVcbP_QBjg8rCCuAqj0&callback=initMap`;
   script.async = true;
   script.defer = true;
   document.head.appendChild(script);
@@ -1038,9 +1044,11 @@ document.getElementById("agreeButton").addEventListener("click", function () {
   }
 
   function onScanError(err) {
-    console.error(err);
+    //  console.error(err);
     // Show the manual code entry if an error occurs
+
     document.getElementById("manualCodeEntry").style.display = "block";
+    
   }
   // document.addEventListener("DOMContentLoaded", function () {
   //   document

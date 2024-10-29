@@ -137,20 +137,21 @@ window.addEventListener("load", () => {
 
 document.getElementById("createacc").addEventListener("submit", async (e) => {
   e.preventDefault();
-  const formdata = new FormData(document.getElementById("createacc"));
-  try {
-    const response = await fetch("http://192.168.1.12:3001/api/user/signup", {
-      method: "POST",
-      body: formdata,
-    });
-    if (response.ok) {
-      container.classList.remove("sign-up-mode");
-    } else {
-      alert("error");
-    }
-  } catch (error) {
-    alert("error");
-  }
+  container.classList.remove("sign-up-mode");
+  // const formdata = new FormData(document.getElementById("createacc"));
+  // try {
+  //   const response = await fetch("http://192.168.241.111:3000/api/user/signup", {
+  //     method: "POST",
+  //     body: formdata,
+  //   });
+  //   if (response.ok) {
+  //     container.classList.remove("sign-up-mode");
+  //   } else {
+  //     alert("error");
+  //   }
+  // } catch (error) {
+  //   alert("error");
+  // }
 });
 
 
@@ -200,16 +201,17 @@ document.getElementById("createacc").addEventListener("submit", async (e) => {
     console.log(formdata); // Log the formdata object
 
     try {
-      const response = await fetch("http://192.168.1.12:3001/api/user/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json", // Set the content type
-        },
-        body: JSON.stringify(formdata), // Convert formdata to JSON
-      });
+      // const response = await fetch("http://192.168.241.111:3000/api/user/login", {
+      //   method: "POST",
+      //   headers: {
+      //     "Content-Type": "application/json", // Set the content type
+      //   },
+      //   body: JSON.stringify(formdata), // Convert formdata to JSON
+      // });
 
-      if (response.ok) {
-        const jsonResponse = await response.json(); // Await the JSON response
+      if (true) {
+        //const jsonResponse = await response.json(); // Await the JSON response
+        const jsonResponse={data:{user:{fullname:"ahmed hassan",wallet:500}}}
         console.log("Success:", jsonResponse); // Log the successful response
 
         const secretKey = "jnvmnjofmcivneirp"; // Define your secret key
