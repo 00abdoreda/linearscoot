@@ -575,7 +575,7 @@ function initMap() {
   //     position: position,
   //     map: map,
   //     icon: {
-  //       url: "../liner scoot/imgs/Liner scoot scooter.png",
+  //       url: "imgs/Liner scoot scooter.png",
   //       scaledSize: new google.maps.Size(50, 50),
   //     },
   //     title: "Scooter Available",
@@ -625,7 +625,7 @@ function initMap() {
       position: position,
       map: map,
       icon: {
-        url: "../liner scoot/imgs/Liner scoot scooter.png",
+        url: "imgs/Liner scoot scooter.png",
         scaledSize: new google.maps.Size(50, 50),
       },
       title: "Scooter Available",
@@ -662,7 +662,7 @@ function initMap() {
       position: position,
       map: map,
       icon: {
-        url: "../liner scoot/imgs/Liner scoot scooter.png",
+        url: "imgs/Liner scoot scooter.png",
         scaledSize: new google.maps.Size(50, 50),
       },
       title: "Scooter Available",
@@ -759,7 +759,7 @@ function initMap() {
       position: position,
       map: map,
       icon: {
-        url: "../liner scoot/imgs/Liner scoot park.png",
+        url: "imgs/Liner scoot park.png",
         scaledSize: new google.maps.Size(80, 50),
       },
       title: "Parking Spot",
@@ -1143,7 +1143,7 @@ document
 function displayScooterDetails(scooterCode, currentBalance) {
   document.querySelector(".scooter-id").innerText = "SCOOT ID: " + scooterCode;
   document.getElementById("scooter-image").src =
-    "../liner scoot/imgs/Good-Quality-Yellow-Black-Electric-Scooter-for-Sale.jpg";
+    "imgs/Good-Quality-Yellow-Black-Electric-Scooter-for-Sale.jpg";
   document.getElementById("scooterDetails").style.display = "block";
   document.getElementById("newScooterDetails").style.display = "none";
 
