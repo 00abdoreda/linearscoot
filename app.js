@@ -137,20 +137,21 @@ window.addEventListener("load", () => {
 
 document.getElementById("createacc").addEventListener("submit", async (e) => {
   e.preventDefault();
-  const formdata = new FormData(document.getElementById("createacc"));
-  try {
-    const response = await fetch("http://192.168.1.12:3001/api/user/signup", {
-      method: "POST",
-      body: formdata,
-    });
-    if (response.ok) {
-      container.classList.remove("sign-up-mode");
-    } else {
-      alert("error");
-    }
-  } catch (error) {
-    alert("error");
-  }
+  container.classList.remove("sign-up-mode");
+  // const formdata = new FormData(document.getElementById("createacc"));
+  // try {
+  //   const response = await fetch("http://192.168.241.111:3000/api/user/signup", {
+  //     method: "POST",
+  //     body: formdata,
+  //   });
+  //   if (response.ok) {
+  //     container.classList.remove("sign-up-mode");
+  //   } else {
+  //     alert("error");
+  //   }
+  // } catch (error) {
+  //   alert("error");
+  // }
 });
 
 // Function to check if the data is expired
@@ -225,9 +226,61 @@ document.getElementById("loginform").addEventListener("submit", async (e) => {
   }
 });
 
+ HEAD
 // Example usage to retrieve and decrypt data
 // const secretKey = "jnvmnjofmcivneirp"; // Use the same secret key for decryption
 // const storedData = getDataWithExpiration("userData", secretKey);
+
+  // Event listener for form submission
+  document.getElementById("loginform").addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const formdata = {
+      email: document.getElementById("loginform").email.value,
+      password: document.getElementById("loginform").password.value,
+    };
+
+    console.log(formdata); // Log the formdata object
+
+    try {
+      // const response = await fetch("http://192.168.241.111:3000/api/user/login", {
+      //   method: "POST",
+      //   headers: {
+      //     "Content-Type": "application/json", // Set the content type
+      //   },
+      //   body: JSON.stringify(formdata), // Convert formdata to JSON
+      // });
+
+      if (true) {
+        //const jsonResponse = await response.json(); // Await the JSON response
+        const jsonResponse={data:{user:{fullname:"ahmed hassan",wallet:500}}}
+        console.log("Success:", jsonResponse); // Log the successful response
+
+        const secretKey = "jnvmnjofmcivneirp"; // Define your secret key
+        setDataWithExpiration("userData", jsonResponse, 20, secretKey);
+        window.location.href = "/profile.html";
+        // Store user data with expiration
+      } else {
+        const errorResponse = await response.json(); // Await the error response
+        console.error("Error:", errorResponse); // Log the error response
+        alert(errorResponse.error || 'An error occurred'); // Handle the error message
+      }
+    } catch (error) {
+      console.error("Fetch error:", error); // Log the error for debugging
+      alert(error.message || 'An error occurred'); // Handle the catch block
+    }
+  });
+
+  // Example usage to retrieve and decrypt data
+  // const secretKey = "jnvmnjofmcivneirp"; // Use the same secret key for decryption
+  // const storedData = getDataWithExpiration("userData", secretKey);
+
+  // if (storedData) {
+  //   console.log("Valid User Data:", storedData);
+  // } else {
+  //   console.log("No valid user data found or data is expired.");
+  // }
+ origin/master
 
 // if (storedData) {
 //   console.log("Valid User Data:", storedData);
