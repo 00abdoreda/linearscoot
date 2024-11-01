@@ -1,3 +1,3 @@
-[submodule ".gitconfig"]
-	path = .gitconfig
-	url = https://github.com/AbdelrahmanShabanh/linearscoot.git
+[submodule "linearscoot"]
+    path = linearscoot
+    url = https://github.com/AbdelrahmanShabanh/linearscoot.git
