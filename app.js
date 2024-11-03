@@ -51,13 +51,13 @@ function validateSignUpForm() {
   const phone = document.getElementById("phone").value.trim();
   const email = document.getElementById("email").value.trim();
   const password = document.getElementById("password").value.trim();
-
+const age = parseInt(document.getElementById("age").value.trim(), 10);
   // Clear previous error messages
   document.getElementById("name-error").style.display = "none";
   document.getElementById("phone-error").style.display = "none";
   document.getElementById("email-error").style.display = "none";
   document.getElementById("password-error").style.display = "none";
-
+ document.getElementById("age-error").style.display = "none";
   if (name.length < 3) {
     document.getElementById("name-error").style.display = "block";
     isValid = false;
@@ -67,6 +67,10 @@ function validateSignUpForm() {
     document.getElementById("phone-error").style.display = "block";
     isValid = false;
   }
+    if (age < 17) {
+      document.getElementById("age-error").style.display = "block";
+      isValid = false;
+    }
 
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!emailRegex.test(email)) {
@@ -199,7 +203,7 @@ document.getElementById("loginform").addEventListener("submit", async (e) => {
   console.log(formdata); // Log the formdata object
 
   try {
-    const response = await fetch("http://192.168.1.12:3001/api/user/login", {
+    const response = await fetch("http://192.168.1.18:3001/api/user/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json", // Set the content type

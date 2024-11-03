@@ -749,7 +749,7 @@ body {
 } */
 .scanerbtn {
     position: fixed; 
-    bottom: 15px; 
+    bottom: 44px; 
     left: 50%;
     transform: translateX(-50%);
     z-index: 1000; 
@@ -786,7 +786,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-   
+    box-shadow: 0 15px 15px rgba(0, 0, 0, 0.1);
 
    
   }
@@ -841,13 +841,23 @@ body {
     height: 100%;
     background-color: #FFF;
     box-shadow: 2px 0 5px rgba(0,0,0,0.2);
-    transition: left 0.3s;
+    transition: left 0.3s ease-in-out;
     padding: 20px;
 }
 
 .sidebar.open {
     left: 0;
 }
+
+#reader img{
+display: none;
+}
+
+#reader__scan_region{
+    min-height: 0px;
+    display: none;
+}
+
 
 .profile-header {
     text-align: center;
@@ -895,14 +905,15 @@ body {
 }
 .scope-icon {
     position: absolute;
-    bottom: 120px;
+    bottom: 150px;
     right: 10px;
-    background:  #ff8800;
-    border: 2px solid #ccc;
+    background: #fc5e0cd1;
+    border: 1px solid #ccc;
     border-radius: 50%;
-    padding: 15px;
+    padding: 14px;
     cursor: pointer;
     z-index: 10;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
 }
 /* .scope-icon img {
     width: 30px;
@@ -911,14 +922,15 @@ body {
 } */
 #go-to-location{
     position: absolute;
-    bottom: 65px;
+    bottom: 93px;
     right: 10px;
-    background:  #ff8800;
-    border: 2px solid #ccc;
+    background:  #fc5e0cd1;
+    border: 1px solid #ccc;
     border-radius: 50%;
     padding: 15px;
     cursor: pointer;
-    z-index: 10;  
+    z-index: 10; 
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1); 
 }
 
 ul {
@@ -947,14 +959,15 @@ ul {
 
 #menuButton {
     position: fixed;
-    top: 20px;
+    top: 27px;
     left: 20px;
-    background-color: #FFA500;
+    background-color: #ff8800c7;
     color: white;
     border: none;
     padding: 10px;
-    border-radius: 5px;
+    border-radius: 7px;
     cursor: pointer;
+    box-shadow: 0 7px 9px rgba(0, 0, 0, 0.1);
 }
 
 body {
@@ -993,7 +1006,7 @@ body {
   
   
   #scanQRButton {
-    background-color: #ff8800;
+    background-color:#ff8800c2;
     border: none;
     padding: 10px;
     color: #fff;
@@ -1030,7 +1043,7 @@ body {
     position: fixed;
     top: 20px;
     right: 50px;
-    background-color: #ffda08;
+    background-color:#ffda08eb;
     border-radius: 13px 2px 2px 13px;
     text-align: center;
     color: #000;
@@ -1051,7 +1064,7 @@ body {
 }
 .pluss{
     color: #ffda08;
-    background-color: #ff8800;
+    background-color: #ff8800c7;
     position: fixed;
     top: 22px;
     right: 5px;
@@ -1080,7 +1093,7 @@ body {
 .scooter-details {
     background: rgba(255, 255, 255, 0.8);
     border-radius: 20px;
-    padding: 20px;
+    padding: 30px;
     width: 100%;
     max-width: 400px;
     margin: 0 auto;
@@ -1091,7 +1104,48 @@ body {
     left: 50%;
     margin-bottom: 0;
     transform: translateX(-50%) ;
-    transition: transform 0.9s ease;
+    transition: max-height 0.5s ease-in-out, transform 0.9s ease;
+    z-index: 10;
+    overflow: hidden;
+    max-height: 100%;
+}
+.battery-time-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.battery-status, .time-left {
+    display: flex;
+    align-items: center;
+}
+
+.battery-icon, .clock-icon {
+    font-size: 24px;
+    margin-right: 10px;
+}
+
+#batteryPercentage, #timeLeft {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+
+
+
+
+#closeScooterDetails {
+    cursor: pointer;
+    position: absolute;
+    top: 3px;
+    left: 11px;
+    font-size: 24px;
+    z-index: 1000;
+}
+
+.scooter-id {
+    cursor: pointer;
 }
 
 #scooterClick{
@@ -1107,7 +1161,7 @@ body {
 }
 
 .scooter-details.collapsed{
-    height: 68px;
+    height: 78px;
     overflow: hidden;
     padding: 20px 20px 0;
     border-radius: 2px;

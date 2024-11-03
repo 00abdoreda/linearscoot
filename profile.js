@@ -89,6 +89,7 @@ function initMap() {
     // 29.43301878738705,
     // 32.39725847256929,
     { lat: 29.433623757350247, lng: 32.39764522843716 },
+    //
 
     // { lat: 29.424899318991706, lng: 32.401327568554116 },
     // { lat: 29.42480362621095, lng: 32.40139236526825 },
@@ -488,12 +489,59 @@ function initMap() {
   });
 
   const redAreaCoordinates = [
-    { lat: 29.424617406683318, lng: 32.39990266216866 },
-    { lat: 29.427364754309696, lng: 32.39994557751128 },
-    { lat: 29.42801887374435, lng: 32.39872249024658 },
-    { lat: 29.428579544192505, lng: 32.39827187914905 },
-    { lat: 29.429121522683744, lng: 32.398014387093326 },
-    { lat: 29.430280225618688, lng: 32.39779981038022 },
+    // { lat: 29.424617406683318, lng: 32.39990266216866 },
+    // // { lat: 29.427364754309696, lng: 32.39994557751128 },
+    // { lat: 29.42801887374435, lng: 32.39872249024658 },
+    // { lat: 29.428579544192505, lng: 32.39827187914905 },
+    // { lat: 29.429121522683744, lng: 32.398014387093326 },
+    // { lat: 29.430280225618688, lng: 32.39779981038022 },
+    // { lat: 29.427348376833184, lng: 32.40016163532696 },
+    { lat: 29.427367066021368, lng: 32.399955105239414 },
+    { lat: 29.427406780534834, lng: 32.39978880828579 },
+    { lat: 29.427451167325597, lng: 32.399657380048254 },
+    { lat: 29.427514243258102, lng: 32.399504494139286 },
+    { lat: 29.427560966145798, lng: 32.39938111252854 },
+    { lat: 29.427649739573205, lng: 32.39921749778385 },
+    { lat: 29.427724496083464, lng: 32.399088751755244 },
+    { lat: 29.427808597091776, lng: 32.398949276890924 },
+    { lat: 29.427939420744025, lng: 32.39877493331051 },
+    { lat: 29.42797446277135, lng: 32.39865691611319 },
+    // { lat: 29.42799782411202, lng: 32.39857108542745 },
+    { lat: 29.427944988501654, lng: 32.3985793254101 },
+    // { lat: 29.428030529979946, lng: 32.398506712413145 },
+    { lat: 29.428074916498147, lng: 32.39843697498099 },
+    { lat: 29.428105286209938, lng: 32.39839137742919 },
+    { lat: 29.428196395290854, lng: 32.398479890323856 },
+    { lat: 29.428233773366717, lng: 32.39847720809257 },
+    { lat: 29.428320210079708, lng: 32.39841819949613 },
+    { lat: 29.428378613222545, lng: 32.39837528415326 },
+    { lat: 29.42844402470261, lng: 32.39831627555681 },
+    { lat: 29.428500091652005, lng: 32.39826263137822 },
+    { lat: 29.428553822449487, lng: 32.398219716035356 },
+    { lat: 29.428537469601107, lng: 32.39814997860319 },
+    { lat: 29.428528125115115, lng: 32.39806951233532 },
+    { lat: 29.42853513347967, lng: 32.397967588396 },
+    { lat: 29.42857484753641, lng: 32.397884439919196 },
+    // { lat: 29.428621569936208, lng: 32.3978120202781 },
+    // { lat: 29.42867296455116, lng: 32.397769104935236 },
+    { lat: 29.428618198659997, lng: 32.39779121161314 },
+    { lat: 29.428778089818945, lng: 32.39770473192093 },
+    {lat:29.428858830801175,lng: 32.39772325040003},
+    // { lat: 29.42884116492738, lng: 32.39767790983164 },
+    { lat: 29.428887887204663, lng: 32.39774228284595 },
+    { lat: 29.428964978915193, lng: 32.39779860923346 },
+    { lat: 29.429014037245995, lng: 32.39784152457633 },
+    { lat: 29.42907010388072, lng: 32.39794076630671 },
+    { lat: 29.42912149828039, lng: 32.397962223972335 },
+    { lat: 29.4292967062258, lng: 32.39792467304732 },
+    { lat: 29.429457897268616, lng: 32.397881757704454 },
+    { lat: 29.429563021735966, lng: 32.39786566444274 },
+    { lat: 29.429668146082456, lng: 32.39785225339809 },
+    { lat: 29.429796631247086, lng: 32.39785225339809 },
+    { lat: 29.42991109971136, lng: 32.39786834665167 },
+    { lat: 29.430025568046634, lng: 32.39789785094989 },
+    { lat: 29.43018909401606, lng: 32.397948812919545 },
+    { lat: 29.43020544661242, lng: 32.39795396671482 },
     { lat: 29.431302550313013, lng: 32.39540058440305 },
     { lat: 29.43025776377204, lng: 32.39492074672488 },
     { lat: 29.429277816282433, lng: 32.394788377710206 },
@@ -508,6 +556,8 @@ function initMap() {
     { lat: 29.424646721457204, lng: 32.398965350465176 },
     { lat: 29.424579721970634, lng: 32.39939483294162 },
     { lat: 29.42454622221076, lng: 32.39988200709399 },
+    // 29.42736704791154,
+    // 32.39994551226386,
     // 29.43301878738705,
     // 32.39725847256929,
   ];
@@ -1048,7 +1098,6 @@ document.getElementById("agreeButton").addEventListener("click", function () {
     // Show the manual code entry if an error occurs
 
     document.getElementById("manualCodeEntry").style.display = "block";
-    
   }
   // document.addEventListener("DOMContentLoaded", function () {
   //   document
@@ -1157,8 +1206,23 @@ function displayScooterDetails(scooterCode, currentBalance) {
 }
 
 // Sidebar and Menu toggle
+// document.getElementById("menuButton").addEventListener("click", function () {
+//   document.getElementById("sidebar").classList.toggle("open");
+// });
 document.getElementById("menuButton").addEventListener("click", function () {
-  document.getElementById("sidebar").classList.toggle("open");
+  const sidebar = document.getElementById("sidebar");
+  const hamburgerIcon = document.getElementById("hamburgerIcon");
+  const closeIcon = document.getElementById("closeIcon");
+
+  if (sidebar.classList.contains("open")) {
+    sidebar.classList.remove("open");
+    hamburgerIcon.style.display = "inline";
+    closeIcon.style.display = "none";
+  } else {
+    sidebar.classList.add("open");
+    hamburgerIcon.style.display = "none";
+    closeIcon.style.display = "inline";
+  }
 });
 
 document.getElementById("upload-button").addEventListener("click", function () {
@@ -1180,6 +1244,34 @@ document.getElementById("upload-button").addEventListener("click", function () {
     }
   };
 });
+
+document
+  .getElementById("closeScooterDetails")
+  .addEventListener("click", function () {
+    const scooterDetails = document.getElementById("newScooterDetails");
+    const close = document.getElementById("closeScooterDetails");
+    scooterDetails.classList.add("collapsed");
+    close.style.display = "none";
+  });
+
+document
+  .getElementById("scooterIdContainer")
+  .addEventListener("click", function () {
+    const scooterDetails = document.getElementById("newScooterDetails");
+    const close = document.getElementById("closeScooterDetails");
+    scooterDetails.classList.remove("collapsed");
+     close.style.display = "inline";
+  });
+  function updateBatteryStatus(batteryPercentage) {
+  const fullChargeTime = 180; // 3 hours in minutes
+  const timeLeft = (batteryPercentage / 100) * fullChargeTime;
+
+  document.getElementById("batteryPercentage").innerText = `${batteryPercentage}%`;
+  document.getElementById("timeLeft").innerText = `${Math.round(timeLeft)} mins`;
+}
+
+// Example usage:
+updateBatteryStatus(75); 
 
 //hide scooter
 document.addEventListener("DOMContentLoaded", function () {
@@ -1259,6 +1351,6 @@ document.querySelectorAll(".dropdown-toggle").forEach((item) => {
 });
 
 function logout() {
-  localStorage.removeItem("userData"); 
-  window.location.href = "/login.html"; 
+  localStorage.removeItem("userData");
+  window.location.href = "/login.html";
 }
