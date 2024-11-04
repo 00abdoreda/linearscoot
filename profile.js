@@ -965,12 +965,28 @@ function initMap() {
 
     const scooterDetailsHTML = `
         <div class="scooter-id">SCOOT ID: ${scooterData.id}</div>
-        <img src="${scooterData.photo}" alt="Scooter" class="scooter-image">
+        <div class="imgwithstatus">
+        
         <div class="scooter-status">
-            <span class="status">${scooterData.lockStatus.toUpperCase()}</span>
-            <div class="time">Time: ${timeToReach.toFixed(0)} min</div>
-            <div class="distance">Distance: ${distance.toFixed(2)} km</div>
+            
+            <div class="time"><i class="fa-solid fa-clock fa-spin fa-lg" style="color: #FFD43B; margin-bottom: 15px;"></i> ${timeToReach.toFixed(
+              0
+            )} min</div>
+            <div class="distance"><i class="fa-solid fa-person-walking fa-beat fa-lg" style="color: #FFD43B; margin-bottom: 15px;"></i>  ${distance.toFixed(
+              2
+            )} km</div>
         </div>
+        <img src="${scooterData.photo}" alt="Scooter" class="scooter-imagee">
+        </div>
+        <span class="status" style="display: block;
+    font-size: 18px;
+    font-weight: bold;
+    color: #FFA500;
+    margin-top: 15px;
+    margin-bottom: 0px;
+    position: relative;
+    left: 0px;
+    ">${scooterData.lockStatus.toUpperCase()}</span>
     `;
 
     scooterDetailsContainer.innerHTML = scooterDetailsHTML;
@@ -1270,6 +1286,18 @@ document
   document.getElementById("timeLeft").innerText = `${Math.round(timeLeft)} mins`;
 }
 
+function updateBatteryStatus(batteryPercentage) {
+  const fullChargeTime = 180; // 3 hours in minutes
+  const timeLeft = (batteryPercentage / 100) * fullChargeTime;
+
+  document.getElementById(
+    "batteryPercentage"
+  ).innerText = `${batteryPercentage}%`;
+  document.getElementById("timeLeft").innerText = `${Math.round(
+    timeLeft
+  )} mins`;
+}
+
 // Example usage:
 updateBatteryStatus(75); 
 
@@ -1349,7 +1377,127 @@ document.querySelectorAll(".dropdown-toggle").forEach((item) => {
     }
   });
 });
+document.addEventListener("DOMContentLoaded", function () {
+  // Check the state of newScooterDetails from local storage
+  const newScooterDetailsState = localStorage.getItem("newScooterDetailsState");
+  if (newScooterDetailsState === "visible") {
+    document.getElementById("newScooterDetails").style.display = "block";
+     document.getElementById("scanCont").style.display = "none";
+  }
 
+
+document
+  .getElementById("startRideButton")
+  .addEventListener("click", function () {
+    // Add the zoom-in class to the newScooterDetails div
+    const newScooterDetails = document.getElementById("newScooterDetails");
+    newScooterDetails.style.display = "block";
+    newScooterDetails.classList.add("zoom-in");
+      localStorage.setItem("newScooterDetailsState", "visible");
+  });
+ document
+   .getElementById("endRideButton")
+   .addEventListener("click", function () {
+     // Hide the scooter details
+     document.getElementById("newScooterDetails").style.display = "none";
+ localStorage.setItem("newScooterDetailsState", "hidden");
+     // Show the scanCont div
+     document.getElementById("scanCont").style.display = "block";
+
+     // Re-initialize the scanner
+     // initializeScanner();
+   });
+  });
+ document
+    .getElementById("cancelRideButton")
+    .addEventListener("click", function () {
+      // Hide the scooter details
+      document.getElementById("scooterDetails").style.display = "none";
+
+      // Show the scanCont div
+      document.getElementById("scanCont").style.display = "block";
+
+      // Re-initialize the scanner
+      // initializeScanner();
+    });
+     document.getElementById("agreeButton").addEventListener("click", function () {
+    // Show the reader__dashboard element
+    document.getElementById("reader").style.display = "block";
+    document.getElementById("reader__dashboard").style.display = "block";
+    document.getElementById("reader__dashboard_section_csr").style.display =
+      "block";
+  });
+document.addEventListener("DOMContentLoaded", function () {
+  // Initialize the scanner when the page loads
+  initializeScanner();
+
+ 
+
+ 
+
+  function initializeScanner() {
+    // Ensure the reader__dashboard is hidden initially
+    document.getElementById("reader__dashboard").style.display = "block";
+
+    // Your scanner initialization code here
+    const scanner = new Html5QrcodeScanner("reader", {
+      qrbox: { width: 250, height: 350 },
+      fps: 20,
+    });
+
+    scanner.render(onScanSuccess, onScanError);
+  }
+
+  function onScanSuccess(decodedText) {
+    displayScooterDetails(decodedText);
+    // Hide the reader after a successful scan
+    document.getElementById("reader").style.display = "none";
+    document.getElementById("manualCodeEntry").style.display = "none";
+  }
+
+  function onScanError(err) {
+    //  console.error(err);
+    // Show the manual code entry if an error occurs
+    document.getElementById("manualCodeEntry").style.display = "block";
+  }
+
+  const requestCameraButton = document.querySelector(".html5-qrcode-element ");
+
+  document
+    .querySelector(".html5-qrcode-element ")
+    .addEventListener("click", function () {
+      // Hide the scan QR button after it's clicked
+      document.getElementById("manualCodeEntry").style.display = "block";
+    });
+
+  if (requestCameraButton) {
+    requestCameraButton.addEventListener("click", function () {
+      const errorElement = document.getElementById("reader__header_message");
+
+      if (errorElement && errorElement.innerText.includes("NotFoundError")) {
+        // Show the "Enter Scooter ID" input if there's a NotFoundError
+        document.getElementById("manualCodeEntry").style.display = "block";
+      }
+    });
+  } else {
+    console.error("Request Camera Permissions button not found.");
+  }
+
+  document
+    .getElementById("submitCodeButton")
+    .addEventListener("click", function () {
+      let manualCode = document.getElementById("manualCode").value;
+
+      if (manualCode) {
+        displayScooterDetails(manualCode);
+        // Hide the reader after submitting the scooter ID manually
+        document.getElementById("reader").style.display = "none";
+        document.getElementById("manualCodeEntry").style.display = "none";
+      } else {
+        document.getElementById("manualCodeEntry").style.display = "none";
+      }
+    });
+});
 function logout() {
   localStorage.removeItem("userData");
   window.location.href = "/login.html";

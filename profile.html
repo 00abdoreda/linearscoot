@@ -114,37 +114,49 @@
    <!-- New Scooter Details Container -->
    <div id="scooterDetails" class="scooter-details" style="display:none;">
     <div class="scooter-id">SCOOT ID: <span id="newScooterId"></span></div>
-    <img src="imgs/Good-Quality-Yellow-Black-Electric-Scooter-for-Sale.jpg" alt="Scooter" class="scooter-image" id="newScooterPhoto" >
    
-    <div class="scooter-status">
+    <div class="scooter-status" style="margin-top: 0;">
+        <img src="imgs/Good-Quality-Yellow-Black-Electric-Scooter-for-Sale.jpg" alt="Scooter" class="scooter-image" id="newScooterPhoto" >
+      
         <div class="battery-time-container">
             <div class="battery-status">
-              <span class="battery-icon">🔋</span>
+                <i class="fa-solid fa-battery-full fa-beat fa-lg" style="color: #FFD43B;"></i>
               <span id="batteryPercentage">100%</span>
             </div>
             <div class="time-left">
-              <span class="clock-icon">⏰</span>
+                <i class="fa-solid fa-hourglass-end fa-spin fa-spin-reverse fa-lg" style="color: #FFD43B;"></i>
               <span id="timeLeft">180 mins</span>
             </div>
-          </div>
-          <span class="status">LOCKED</span>
+          </div> 
+          
         </div>
+         <span class="status">LOCKED</span>
         <!-- <p>Min amount to start is <span style="color: red;">30 EGP</span></p> -->
-        <button id="startRideButton" class="btn btn-warning" style="background-color: rgb(255 149 7);">Start Ride &rarr;</button>
-    
+        <button id="startRideButton" class="btn btn-warning" style="background-color: rgb(255 149 7);">Start Ride </button>
+        <button id="cancelRideButton" class="btn btn-danger" style="    background-color: #acacac;">Cancel Ride </button>
 </div>
     <!-- Scooter Details Container -->
     <div id="newScooterDetails" class="scooter-details" style="display:none;">
         <span id="closeScooterDetails" style="cursor:pointer; position:absolute; top:10px; left:10px;">✖</span>
         <div class="scooter-id" id="scooterIdContainer">SCOOT ID: <span id="newScooterId"></span></div>
+        <div class="scooter-status" style="margin-top: 0;">
         <img src="imgs/Good-Quality-Yellow-Black-Electric-Scooter-for-Sale.jpg" alt="Scooter" class="scooter-image" id="scooter-image">
-        <div class="scooter-status">
-            <span class="status">UNLOCKED</span> <!-- or UNLOCKED -->
+        
+        <div class="battery-time-container">
             <div class="battery-status">
-                <div class="battery-bar" style="width: 80%;">80%</div>
+                <i class="fa-solid fa-battery-full fa-beat fa-lg" style="color: #FFD43B;"></i>
+              <span id="batteryPercentage">100%</span>
             </div>
-            <div class="scooter-balance">1 Min</div>
-        </div>
+            <div class="time-left">
+                <i class="fa-solid fa-hourglass-end fa-spin fa-spin-reverse fa-lg" style="color: #FFD43B;"></i>
+              <span id="timeLeft">180 mins</span>
+            </div>
+          </div> 
+            </div>
+            <span class="status">UNLOCKED</span> <!-- or UNLOCKED -->
+            <button id="endRideButton" class="btn btn-warning" style="background-color: rgb(255 149 7);">End Ride</button>
+    
+        
     </div>
     <!-- details click -->
     <div id="scooterClick" class="scooter-details" style="display:none;">

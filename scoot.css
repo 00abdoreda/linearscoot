@@ -1110,15 +1110,16 @@ body {
     max-height: 100%;
 }
 .battery-time-container {
-    display: flex;
+    /* display: flex;
     justify-content: space-between;
-    align-items: center;
-    margin-top: 10px;
+    align-items: center; */
+    margin-top: 20px;
 }
 
 .battery-status, .time-left {
     display: flex;
     align-items: center;
+    
 }
 
 .battery-icon, .clock-icon {
@@ -1129,8 +1130,11 @@ body {
 #batteryPercentage, #timeLeft {
     font-size: 18px;
     font-weight: bold;
+    margin-left: 12px;
 }
-
+#timeLeft{
+    width: 100px;
+}
 
 
 
@@ -1148,6 +1152,13 @@ body {
     cursor: pointer;
 }
 
+.imgwithstatus{
+    display: flex;
+    gap: 6rem;
+    align-items: stretch;
+    justify-content: center;
+}
+
 #scooterClick{
     z-index: 1000;
     position: absolute;
@@ -1155,6 +1166,7 @@ body {
 }
 .time{
     font-weight: 600;
+    margin: 1px 12px 17px 12px;
 }
 .distance{
     font-weight: 600;
@@ -1179,17 +1191,25 @@ body {
    
 }
 
-.scooter-image {
-    width: 80%;
+.scooter-imagee {
+    
+    width: 350px;
     max-width: 250px;
     margin: 10px auto;
     display: block;
-    border-radius: 50%;
+    /* border-radius: 50%; */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: relative;
+    top: 10px;
 }
 
+#reader__dashboard {
+    /* display: none; */
+}
 .scooter-status {
-    margin-top: 20px;
+    display: flex;
+    gap: 3rem;
+    margin-top: 23px;
 }
 
 .status {
@@ -1198,6 +1218,8 @@ body {
     font-weight: bold;
     color: #FFA500;
     margin-bottom: 10px;
+    position: relative;
+    left: 40px;
 }
 
 .battery-status {
@@ -1261,10 +1283,12 @@ font-weight: 600;
 }
 
 .scooter-image{
-    width: 80px;
-    height: 80px;
+    width: 100px;
+    height: 100px;
     border-radius: 50%;
     margin-bottom: 10px;
+    position: relative;
+    top: 23px;
 
 }
 
@@ -1397,6 +1421,20 @@ margin-bottom: 3px;
         bottom: 189px;
         width: 100%;
 }
+@keyframes zoomIn {
+    0% {
+      transform: scale(0.5);
+      opacity: 0;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  
+  .zoom-in {
+    /* animation: zoomIn 0.5s ease-in-out forwards; */
+  }
 #manualCode{
     
         max-width: 380px;
