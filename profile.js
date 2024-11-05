@@ -30,21 +30,60 @@ if (storedData) {
   console.log("Valid User Data:", storedData);
   document.getElementById("profileName").innerText =
     storedData.data.user.fullname;
-  document.getElementById(
-    "ProfileBalance"
-  ).innerText = `${storedData.data.user.wallet} EGP`;
+  // document.getElementById(
+  //   "ProfileBalance"
+  // ).innerText = `${storedData.data.user.wallet} EGP`;
   // document.getElementById(
   //   "ProfileBalance"
   // ).innerText = `50 EGP`;
-  document.getElementById(
-    "currentBalance"
-  ).innerText = `${storedData.data.user.wallet} EGP`;
+  // document.getElementById(
+  //   "currentBalance"
+  // ).innerText = `${storedData.data.user.wallet} EGP`;
   // document.getElementById(
   //   "currentBalance"
   // ).innerText = `50 EGP`;
 } else {
   window.location.href = "/login.html";
 }
+async function fetchBalanceFromAPI() {
+  console.log(storedData.data.user.email);
+  const response = await fetch('https://scooter-mocha.vercel.app/api/checkout/userbalance',{
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ email:storedData.data.user.email}),
+}); // replace with your API URL
+  if (!response.ok) {
+    console.log(response.error);
+      throw new Error('Network response was not ok');
+  }
+  const data = await response.json();
+  
+  return data.wallet; // assuming the API returns an object with a 'balance' field
+}
+document.getElementById('currentBalance').addEventListener('click', function() {
+  // Assuming you have a function to fetch the balance from your API
+  fetchBalanceFromAPI().then(balance => {
+      // Update the span text with the fetched balance
+      this.innerHTML = `${balance} <sub>EGP</sub>`;
+  }).catch(error => {
+      console.error('Error fetching balance:', error);
+      // Optionally, you could handle the error by displaying a message
+      this.innerHTML = 'Error fetching balance <sub>EGP</sub>';
+  });
+});
+document.getElementById('ProfileBalance').addEventListener('click', function() {
+  // Assuming you have a function to fetch the balance from your API
+  fetchBalanceFromAPI().then(balance => {
+      // Update the span text with the fetched balance
+      this.innerHTML = `${balance} <sub>EGP</sub>`;
+  }).catch(error => {
+      console.error('Error fetching balance:', error);
+      // Optionally, you could handle the error by displaying a message
+      this.innerHTML = 'Error fetching balance <sub>EGP</sub>';
+  });
+});
 function initMap() {
   const allowedAreaCoords = [
     // { lat: 29.43416116753383, lng: 32.398229305394274 }, //clockwise

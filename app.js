@@ -203,7 +203,7 @@ document.getElementById("loginform").addEventListener("submit", async (e) => {
   console.log(formdata); // Log the formdata object
 
   try {
-    const response = await fetch("http://192.168.1.18:3001/api/user/login", {
+    const response = await fetch("https://scooter-mocha.vercel.app/api/user/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json", // Set the content type
