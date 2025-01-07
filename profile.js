@@ -1392,6 +1392,9 @@ document
     const close = document.getElementById("closeScooterDetails");
     scooterDetails.classList.add("collapsed");
     close.style.display = "none";
+    document.getElementById("scanQRButton").style.display="flex"
+   document.getElementById("buttoncircle").style.display="flex"
+   document.getElementById("menuButton").style.display = "block";
   });
 
 document
