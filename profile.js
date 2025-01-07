@@ -1198,15 +1198,15 @@ video.addEventListener("loadedmetadata", () => {
       const imageData = context.getImageData(0, 0, canvas.width, canvas.height);
       const decodedQR = jsQR(imageData.data, canvas.width, canvas.height);
 
-      if (decodedQR) {
-        // resultElement.innerText = `QR Code Result: ${decodedQR.data}`;
-        // alert(decodedQR.data)
-        console.log(decodedQR.data);
-        displayScooterDetails(decodedQR.data);
-        video.style.display = "none";
-        stopCamera();
-        // Stop the camera after a successful scan
-      }
+        if (decodedQR) {
+            // resultElement.innerText = `QR Code Result: ${decodedQR.data}`;
+            // alert(decodedQR.data)
+            console.log(decodedQR.data);
+            displayScooterDetails(decodedQR.data);
+            video.style.display="none"
+            stopCamera(); 
+            // Stop the camera after a successful scan
+        }
     }, 300); // Scan every 300ms
   }
 
@@ -1415,6 +1415,7 @@ document
     const close = document.getElementById("closeScooterDetails");
     scooterDetails.classList.add("collapsed");
     close.style.display = "none";
+  
   });
 
 document
@@ -1544,28 +1545,28 @@ document.addEventListener("DOMContentLoaded", function () {
       newScooterDetails.style.display = "block";
       newScooterDetails.classList.add("zoom-in");
       localStorage.setItem("newScooterDetailsState", "visible");
-    });
-  document
-    .getElementById("endRideButton")
+  });
+ document
+   .getElementById("endRideButton")
+   .addEventListener("click", function () {
+     // Hide the scooter details
+     document.getElementById("newScooterDetails").style.display = "none";
+ localStorage.setItem("newScooterDetailsState", "hidden");
+     // Show the scanCont div
+     document.getElementById("scanCont").style.display = "block";
+
+     // Re-initialize the scanner
+     // initializeScanner();
+   });
+  });
+ document
+    .getElementById("cancelRideButton")
     .addEventListener("click", function () {
       // Hide the scooter details
-      document.getElementById("newScooterDetails").style.display = "none";
-      localStorage.setItem("newScooterDetailsState", "hidden");
+      document.getElementById("scooterDetails").style.display = "none";
+
       // Show the scanCont div
       document.getElementById("scanCont").style.display = "block";
-
-      // Re-initialize the scanner
-      // initializeScanner();
-    });
-});
-document
-  .getElementById("cancelRideButton")
-  .addEventListener("click", function () {
-    // Hide the scooter details
-    document.getElementById("scooterDetails").style.display = "none";
-
-    // Show the scanCont div
-    document.getElementById("scanCont").style.display = "block";
 
     // Re-initialize the scanner
     // initializeScanner();
