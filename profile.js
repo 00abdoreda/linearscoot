@@ -1167,6 +1167,7 @@ function scanQRCode() {
 
         if (decodedQR) {
             // resultElement.innerText = `QR Code Result: ${decodedQR.data}`;
+            alert(decodedQR.data)
             console.log(decodedQR.data);
             stopCamera(); // Stop the camera after a successful scan
         }
