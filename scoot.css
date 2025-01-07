@@ -889,7 +889,7 @@ display: none;
     width: 90%;
     max-width: 400px;
     height: 80%;
-    border: 2px solid #FFA500; /* Frame around the video */
+    border: 2px solid #FFA500; 
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -915,6 +915,9 @@ display: none;
   #preview {
     width: 90%;
     height: 70%;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
     border-radius: 10px;
     z-index: 1;
   }
@@ -946,9 +949,7 @@ display: none;
     z-index: 2;
   }
   
-  #closeButton:hover {
-    color: red;
-  }
+
 
 .profile-header {
     text-align: center;

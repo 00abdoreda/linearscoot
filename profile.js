@@ -47,43 +47,54 @@ if (storedData) {
 }
 async function fetchBalanceFromAPI() {
   console.log(storedData.data.user.email);
-  const response = await fetch('https://scooter-mocha.vercel.app/api/checkout/userbalance',{
-    method: 'POST',
-    headers: {
-        'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({ email:storedData.data.user.email}),
-}); // replace with your API URL
+  const response = await fetch(
+    "https://scooter-mocha.vercel.app/api/checkout/userbalance",
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email: storedData.data.user.email }),
+    }
+  ); // replace with your API URL
   if (!response.ok) {
     console.log(response.error);
-      throw new Error('Network response was not ok');
+    throw new Error("Network response was not ok");
   }
   const data = await response.json();
-  
+
   return data.wallet; // assuming the API returns an object with a 'balance' field
 }
-document.getElementById('currentBalance').addEventListener('click', function() {
-  // Assuming you have a function to fetch the balance from your API
-  fetchBalanceFromAPI().then(balance => {
-      // Update the span text with the fetched balance
-      this.innerHTML = `${balance} <sub>EGP</sub>`;
-  }).catch(error => {
-      console.error('Error fetching balance:', error);
-      // Optionally, you could handle the error by displaying a message
-      this.innerHTML = 'Error fetching balance <sub>EGP</sub>';
+document
+  .getElementById("currentBalance")
+  .addEventListener("click", function () {
+    // Assuming you have a function to fetch the balance from your API
+    fetchBalanceFromAPI()
+      .then((balance) => {
+        // Update the span text with the fetched balance
+        this.innerHTML = `${balance} <sub>EGP</sub>`;
+      })
+      .catch((error) => {
+        console.error("Error fetching balance:", error);
+        // Optionally, you could handle the error by displaying a message
+        this.innerHTML = "Error fetching balance <sub>EGP</sub>";
+      });
   });
-});
-document.getElementById('ProfileBalance').addEventListener('click', function() {
-  // Assuming you have a function to fetch the balance from your API
-  fetchBalanceFromAPI().then(balance => {
-      // Update the span text with the fetched balance
-      this.innerHTML = `${balance} <sub>EGP</sub>`;
-  }).catch(error => {
-      console.error('Error fetching balance:', error);
-      // Optionally, you could handle the error by displaying a message
-      this.innerHTML = 'Error fetching balance <sub>EGP</sub>';
+document
+  .getElementById("ProfileBalance")
+  .addEventListener("click", function () {
+    // Assuming you have a function to fetch the balance from your API
+    fetchBalanceFromAPI()
+      .then((balance) => {
+        // Update the span text with the fetched balance
+        this.innerHTML = `${balance} <sub>EGP</sub>`;
+      })
+      .catch((error) => {
+        console.error("Error fetching balance:", error);
+        // Optionally, you could handle the error by displaying a message
+        this.innerHTML = "Error fetching balance <sub>EGP</sub>";
+      });
   });
-});
 function initMap() {
   const allowedAreaCoords = [
     // { lat: 29.43416116753383, lng: 32.398229305394274 }, //clockwise
@@ -565,7 +576,7 @@ function initMap() {
     // { lat: 29.42867296455116, lng: 32.397769104935236 },
     { lat: 29.428618198659997, lng: 32.39779121161314 },
     { lat: 29.428778089818945, lng: 32.39770473192093 },
-    {lat:29.428858830801175,lng: 32.39772325040003},
+    { lat: 29.428858830801175, lng: 32.39772325040003 },
     // { lat: 29.42884116492738, lng: 32.39767790983164 },
     { lat: 29.428887887204663, lng: 32.39774228284595 },
     { lat: 29.428964978915193, lng: 32.39779860923346 },
@@ -1126,65 +1137,79 @@ document.getElementById("scanQRButton").addEventListener("click", function () {
   // Show the terms and conditions modal
   document.getElementById("termsModal").style.display = "flex";
 });
-document.getElementById("agreeButton").addEventListener("click",()=>{
-  document.getElementById("scanQRButton").style.display="none"
-   document.getElementById("buttoncircle").style.display="none"
-   document.getElementById("menuButton").style.display = "none";
-   const videoStyle = document.getElementById("scannersContainer");
-  const video = document.getElementById('preview');
-   const flashButton = document.getElementById("flashButton");
+document.getElementById("agreeButton").addEventListener("click", () => {
+  document.getElementById("scanQRButton").style.display = "none";
+  document.getElementById("buttoncircle").style.display = "none";
+  document.getElementById("menuButton").style.display = "none";
+  const videoStyle = document.getElementById("scannersContainer");
+  const video = document.getElementById("preview");
+  const flashButton = document.getElementById("flashButton");
 
   let scanInterval;
   let stream;
   let track;
   document.getElementById("termsModal").style.display = "none";
-  videoStyle.style.display="flex"
-  video.style.display= "block"
+  videoStyle.style.display = "flex";
+  video.style.display = "block";
   async function startScanner() {
     try {
-        stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } });
-        video.srcObject = stream;
-        video.play();
-        scanQRCode();
-    } catch (err) {
-        resultElement.innerText = `Error: ${err.message}`;
-    }
-}
+      stream = await navigator.mediaDevices.getUserMedia({
+        video: {
+          facingMode: "environment",
+          width: { ideal: 1280 },
+          height: { ideal: 720 },
+        },
+      });
+      video.srcObject = stream;
+      video.play();
+video.addEventListener("loadedmetadata", () => {
+  video.style.width="90%";
+  video.style.height="70%";
+  video.style.maxWidth="100%";
+  video.style.maxHeight="100%";
+  video.style.objectFit="cover";
+});
 
-// Stop the camera
-function stopCamera() {
+      scanQRCode();
+    } catch (err) {
+      resultElement.innerText = `Error: ${err.message}`;
+    }
+  }
+
+  // Stop the camera
+  function stopCamera() {
     if (stream) {
-        const tracks = stream.getTracks();
-        tracks.forEach(track => track.stop()); // Stop all tracks in the stream
+      const tracks = stream.getTracks();
+      tracks.forEach((track) => track.stop()); // Stop all tracks in the stream
     }
     clearInterval(scanInterval); // Stop scanning
-}
+  }
 
-// Scan QR Code from video feed
-function scanQRCode() {
+  // Scan QR Code from video feed
+  function scanQRCode() {
     scanInterval = setInterval(() => {
-        const canvas = document.createElement('canvas');
-        const context = canvas.getContext('2d');
-        canvas.height = video.videoHeight;
-        canvas.width = video.videoWidth;
-        context.drawImage(video, 0, 0, canvas.width, canvas.height);
+      const canvas = document.createElement("canvas");
+      const context = canvas.getContext("2d");
+      canvas.height = video.videoHeight;
+      canvas.width = video.videoWidth;
+      context.drawImage(video, 0, 0, canvas.width, canvas.height);
 
-        const imageData = context.getImageData(0, 0, canvas.width, canvas.height);
-        const decodedQR = jsQR(imageData.data, canvas.width, canvas.height);
+      const imageData = context.getImageData(0, 0, canvas.width, canvas.height);
+      const decodedQR = jsQR(imageData.data, canvas.width, canvas.height);
 
-        if (decodedQR) {
-            // resultElement.innerText = `QR Code Result: ${decodedQR.data}`;
-            // alert(decodedQR.data)
-            console.log(decodedQR.data);
-            displayScooterDetails(decodedQR.data);
-            video.style.display="none"
-            stopCamera(); 
-            // Stop the camera after a successful scan
-        }
+      if (decodedQR) {
+        // resultElement.innerText = `QR Code Result: ${decodedQR.data}`;
+        // alert(decodedQR.data)
+        console.log(decodedQR.data);
+        displayScooterDetails(decodedQR.data);
+        video.style.display = "none";
+        stopCamera();
+        // Stop the camera after a successful scan
+      }
     }, 300); // Scan every 300ms
-}
+  }
 
-startScanner();
+  startScanner();
   document.getElementById("closeButton").addEventListener("click", () => {
     stopCamera();
     video.style.display = "none";
@@ -1207,9 +1232,7 @@ startScanner();
       }
     }
   });
-
-
-})
+});
 
 // document.getElementById("agreeButton").addEventListener("click", function () {
 //   // Hide the modal after the user agrees
@@ -1399,14 +1422,18 @@ document
     const scooterDetails = document.getElementById("newScooterDetails");
     const close = document.getElementById("closeScooterDetails");
     scooterDetails.classList.remove("collapsed");
-     close.style.display = "inline";
+    close.style.display = "inline";
   });
-  function updateBatteryStatus(batteryPercentage) {
+function updateBatteryStatus(batteryPercentage) {
   const fullChargeTime = 180; // 3 hours in minutes
   const timeLeft = (batteryPercentage / 100) * fullChargeTime;
 
-  document.getElementById("batteryPercentage").innerText = `${batteryPercentage}%`;
-  document.getElementById("timeLeft").innerText = `${Math.round(timeLeft)} mins`;
+  document.getElementById(
+    "batteryPercentage"
+  ).innerText = `${batteryPercentage}%`;
+  document.getElementById("timeLeft").innerText = `${Math.round(
+    timeLeft
+  )} mins`;
 }
 
 function updateBatteryStatus(batteryPercentage) {
@@ -1422,7 +1449,7 @@ function updateBatteryStatus(batteryPercentage) {
 }
 
 // Example usage:
-updateBatteryStatus(75); 
+updateBatteryStatus(75);
 
 //hide scooter
 document.addEventListener("DOMContentLoaded", function () {
@@ -1505,58 +1532,53 @@ document.addEventListener("DOMContentLoaded", function () {
   const newScooterDetailsState = localStorage.getItem("newScooterDetailsState");
   if (newScooterDetailsState === "visible") {
     document.getElementById("newScooterDetails").style.display = "block";
-     document.getElementById("scanCont").style.display = "none";
+    document.getElementById("scanCont").style.display = "none";
   }
 
-
-document
-  .getElementById("startRideButton")
-  .addEventListener("click", function () {
-    // Add the zoom-in class to the newScooterDetails div
-    const newScooterDetails = document.getElementById("newScooterDetails");
-    newScooterDetails.style.display = "block";
-    newScooterDetails.classList.add("zoom-in");
+  document
+    .getElementById("startRideButton")
+    .addEventListener("click", function () {
+      // Add the zoom-in class to the newScooterDetails div
+      const newScooterDetails = document.getElementById("newScooterDetails");
+      newScooterDetails.style.display = "block";
+      newScooterDetails.classList.add("zoom-in");
       localStorage.setItem("newScooterDetailsState", "visible");
-  });
- document
-   .getElementById("endRideButton")
-   .addEventListener("click", function () {
-     // Hide the scooter details
-     document.getElementById("newScooterDetails").style.display = "none";
- localStorage.setItem("newScooterDetailsState", "hidden");
-     // Show the scanCont div
-     document.getElementById("scanCont").style.display = "block";
-
-     // Re-initialize the scanner
-     // initializeScanner();
-   });
-  });
- document
-    .getElementById("cancelRideButton")
+    });
+  document
+    .getElementById("endRideButton")
     .addEventListener("click", function () {
       // Hide the scooter details
-      document.getElementById("scooterDetails").style.display = "none";
-
+      document.getElementById("newScooterDetails").style.display = "none";
+      localStorage.setItem("newScooterDetailsState", "hidden");
       // Show the scanCont div
       document.getElementById("scanCont").style.display = "block";
 
       // Re-initialize the scanner
       // initializeScanner();
     });
-     document.getElementById("agreeButton").addEventListener("click", function () {
-    // Show the reader__dashboard element
-    document.getElementById("reader").style.display = "block";
-    document.getElementById("reader__dashboard").style.display = "block";
-    document.getElementById("reader__dashboard_section_csr").style.display =
-      "block";
+});
+document
+  .getElementById("cancelRideButton")
+  .addEventListener("click", function () {
+    // Hide the scooter details
+    document.getElementById("scooterDetails").style.display = "none";
+
+    // Show the scanCont div
+    document.getElementById("scanCont").style.display = "block";
+
+    // Re-initialize the scanner
+    // initializeScanner();
   });
+document.getElementById("agreeButton").addEventListener("click", function () {
+  // Show the reader__dashboard element
+  document.getElementById("reader").style.display = "block";
+  document.getElementById("reader__dashboard").style.display = "block";
+  document.getElementById("reader__dashboard_section_csr").style.display =
+    "block";
+});
 document.addEventListener("DOMContentLoaded", function () {
   // Initialize the scanner when the page loads
   initializeScanner();
-
- 
-
- 
 
   function initializeScanner() {
     // Ensure the reader__dashboard is hidden initially
