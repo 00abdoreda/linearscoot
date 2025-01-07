@@ -1159,6 +1159,7 @@ document.getElementById("agreeButton").addEventListener("click", () => {
           width: { ideal: 1280 },
           height: { ideal: 720 },
         },
+        
       });
       video.srcObject = stream;
       video.play();
