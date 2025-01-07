@@ -1129,11 +1129,16 @@ document.getElementById("scanQRButton").addEventListener("click", function () {
 document.getElementById("agreeButton").addEventListener("click",()=>{
   document.getElementById("scanQRButton").style.display="none"
    document.getElementById("buttoncircle").style.display="none"
+   document.getElementById("menuButton").style.display = "none";
+   const videoStyle = document.getElementById("scannersContainer");
   const video = document.getElementById('preview');
-  
+   const flashButton = document.getElementById("flashButton");
+
   let scanInterval;
   let stream;
+  let track;
   document.getElementById("termsModal").style.display = "none";
+  videoStyle.style.display="flex"
   video.style.display= "block"
   async function startScanner() {
     try {
@@ -1180,6 +1185,29 @@ function scanQRCode() {
 }
 
 startScanner();
+  document.getElementById("closeButton").addEventListener("click", () => {
+    stopCamera();
+    video.style.display = "none";
+    videoStyle.style.display = "none";
+    document.getElementById("scanQRButton").style.display = "flex";
+    document.getElementById("buttoncircle").style.display = "flex";
+    document.getElementById("menuButton").style.display = "flex";
+  });
+
+  flashButton.addEventListener("click", () => {
+    if (track) {
+      const capabilities = track.getCapabilities();
+      if (capabilities.torch) {
+        const settings = track.getSettings();
+        track.applyConstraints({
+          advanced: [{ torch: !settings.torch }],
+        });
+      } else {
+        console.warn("Torch is not supported on this device.");
+      }
+    }
+  });
+
 
 })
 
@@ -1278,20 +1306,20 @@ startScanner();
 //   }
 // });
 
-document
-  .getElementById("submitCodeButton")
-  .addEventListener("click", function () {
-    let manualCode = document.getElementById("manualCode").value;
+// document
+//   .getElementById("submitCodeButton")
+//   .addEventListener("click", function () {
+//     let manualCode = document.getElementById("manualCode").value;
 
-    if (manualCode) {
-      displayScooterDetails(manualCode);
-      // Hide the reader after submitting the scooter ID manually
-      document.getElementById("reader").style.display = "none";
-      document.getElementById("manualCodeEntry").style.display = "none";
-    } else {
-      document.getElementById("manualCodeEntry").style.display = "block";
-    }
-  });
+//     if (manualCode) {
+//       displayScooterDetails(manualCode);
+//       // Hide the reader after submitting the scooter ID manually
+//       document.getElementById("reader").style.display = "none";
+//       document.getElementById("manualCodeEntry").style.display = "none";
+//     } else {
+//       document.getElementById("manualCodeEntry").style.display = "block";
+//     }
+//   });
 
 // function displayScooterDetails(code) {
 //   document.getElementById("scooterDetails").style.display = "block";

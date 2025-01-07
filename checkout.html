@@ -91,7 +91,12 @@
       margin-bottom: 10px;
       border: 1px solid #ddd;
       border-radius: 4px;
+      
     }
+
+    input, textarea {
+    font-size: 16px; 
+}
 
     .form-section label {
       font-weight: bold;
@@ -419,6 +424,8 @@ document.getElementById('walletAmount').addEventListener('click', function() {
          
            <label for="amountCreditCard">Amount:</label>
           <input type="number" min="30" id="amountCreditCard" name="amountCreditCard" placeholder="Enter amount">
+             <label for="amountCreditCard">Enter Promo code:</label>
+          <input type="number" min="3" id="amountCreditCard" name="amountCreditCard" placeholder="Enter promo code">
         `;
         payBtnText += 'Now';
         break;
