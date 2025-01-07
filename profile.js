@@ -1392,9 +1392,7 @@ document
     const close = document.getElementById("closeScooterDetails");
     scooterDetails.classList.add("collapsed");
     close.style.display = "none";
-    document.getElementById("scanQRButton").style.display="flex"
-   document.getElementById("buttoncircle").style.display="flex"
-   document.getElementById("menuButton").style.display = "block";
+  
   });
 
 document
@@ -1530,7 +1528,9 @@ document
  localStorage.setItem("newScooterDetailsState", "hidden");
      // Show the scanCont div
      document.getElementById("scanCont").style.display = "block";
-
+     document.getElementById("scanQRButton").style.display="flex"
+     document.getElementById("buttoncircle").style.display="flex"
+     document.getElementById("menuButton").style.display = "block";
      // Re-initialize the scanner
      // initializeScanner();
    });
@@ -1543,6 +1543,9 @@ document
 
       // Show the scanCont div
       document.getElementById("scanCont").style.display = "block";
+      document.getElementById("scanQRButton").style.display="flex"
+      document.getElementById("buttoncircle").style.display="flex"
+      document.getElementById("menuButton").style.display = "block";
 
       // Re-initialize the scanner
       // initializeScanner();
