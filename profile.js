@@ -1167,9 +1167,12 @@ function scanQRCode() {
 
         if (decodedQR) {
             // resultElement.innerText = `QR Code Result: ${decodedQR.data}`;
-            alert(decodedQR.data)
+            // alert(decodedQR.data)
             console.log(decodedQR.data);
-            stopCamera(); // Stop the camera after a successful scan
+            displayScooterDetails(decodedQR.data);
+            video.style.display="none"
+            stopCamera(); 
+            // Stop the camera after a successful scan
         }
     }, 300); // Scan every 300ms
 }
