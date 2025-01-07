@@ -1178,6 +1178,7 @@ function scanQRCode() {
             console.log(decodedQR.data);
             displayScooterDetails(decodedQR.data);
             video.style.display="none"
+            videoStyle.style.display="none"
             stopCamera(); 
             // Stop the camera after a successful scan
         }
