@@ -866,6 +866,85 @@ display: none;
 }
 
 
+#preview{
+    border-radius: 50%;
+}
+
+#scannerContainer {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.8); /* Black background with opacity */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  #overlay {
+    position: relative;
+    width: 80%;
+    max-width: 400px;
+    height: 80%;
+    border: 2px solid #FFA500; /* Frame around the video */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 15px;
+  }
+  
+  #topText {
+    position: absolute;
+    top: 10%;
+    text-align: center;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 10px;
+    z-index: 2;
+  }
+  
+  #preview {
+    width: 90%;
+    height: 70%;
+    border-radius: 10px;
+    z-index: 1;
+  }
+  
+  #flashButton {
+    position: absolute;
+    bottom: 20%;
+    background-color: black;
+    color: white;
+    border: 1px solid white;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    z-index: 2;
+  }
+  
+  #flashButton:hover {
+    background-color: white;
+    color: black;
+  }
+  
+  #closeButton {
+    position: absolute;
+    top: 5%;
+    right: 5%;
+    background: none;
+    color: white;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    z-index: 2;
+  }
+  
+  #closeButton:hover {
+    color: red;
+  }
+
 .profile-header {
     text-align: center;
     /* margin-bottom: 20px; */

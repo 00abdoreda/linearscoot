@@ -37,7 +37,15 @@
         </button>
 
 </div>
-<video id="preview" width="100" height="100" style="border: 1px solid black; display:none;"></video>
+<div id="scannerContainer">
+    <div id="overlay">
+      <div id="topText">Scan the QR code to start the ride</div>
+      <video id="preview" width="100" height="100" style="border: 1px solid black; display:none;"></video>
+
+      <button id="flashButton">Open Flash</button>
+      <button id="closeButton">✖</button>
+    </div>
+  </div>
 
 </div>
         <!-- Manual Code Entry -->
@@ -103,13 +111,13 @@
         <li ><a href="refund.html">Refund</a></li>
      
         
-        <li><a id="logoutButton" onclick="logout()">Log Out</a></li>
+        <li><a id="logoutButton" onclick="logout()"></a></li>
         </ul>
     </div>
 
     <button id="menuButton">
         <span id="hamburgerIcon">☰</span>
-        <span id="closeIcon" style="display:none;">✖</span>
+        <span id="closeIcon" style="display:none; color: white;">✖</span>
     </button>
 <div id="balanceContainer" class="balance-container">
    <div class="mybala"> My balance</div>
