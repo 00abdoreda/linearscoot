@@ -1126,101 +1126,151 @@ document.getElementById("scanQRButton").addEventListener("click", function () {
   // Show the terms and conditions modal
   document.getElementById("termsModal").style.display = "flex";
 });
-
-document.getElementById("agreeButton").addEventListener("click", function () {
-  // Hide the modal after the user agrees
+document.getElementById("agreeButton").addEventListener("click",()=>{
+  const video = document.getElementById('preview');
+  
+  let scanInterval;
+  let stream;
   document.getElementById("termsModal").style.display = "none";
+  video.style.display= "block"
+  async function startScanner() {
+    try {
+        stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } });
+        video.srcObject = stream;
+        video.play();
+        scanQRCode();
+    } catch (err) {
+        resultElement.innerText = `Error: ${err.message}`;
+    }
+}
 
-  // Hide the scan QR button after it's clicked
-  document.getElementById("scanCont").style.display = "none";
+// Stop the camera
+function stopCamera() {
+    if (stream) {
+        const tracks = stream.getTracks();
+        tracks.forEach(track => track.stop()); // Stop all tracks in the stream
+    }
+    clearInterval(scanInterval); // Stop scanning
+}
 
-  const scanner = new Html5QrcodeScanner("reader", {
-    qrbox: { width: 250, height: 250 },
-    fps: 20,
-  });
+// Scan QR Code from video feed
+function scanQRCode() {
+    scanInterval = setInterval(() => {
+        const canvas = document.createElement('canvas');
+        const context = canvas.getContext('2d');
+        canvas.height = video.videoHeight;
+        canvas.width = video.videoWidth;
+        context.drawImage(video, 0, 0, canvas.width, canvas.height);
 
-  scanner.render(onScanSuccess, onScanError);
+        const imageData = context.getImageData(0, 0, canvas.width, canvas.height);
+        const decodedQR = jsQR(imageData.data, canvas.width, canvas.height);
 
-  function onScanSuccess(decodedText) {
-    displayScooterDetails(decodedText);
-    // Hide the reader after a successful scan
-    document.getElementById("reader").style.display = "none";
-    document.getElementById("manualCodeEntry").style.display = "none";
-  }
+        if (decodedQR) {
+            // resultElement.innerText = `QR Code Result: ${decodedQR.data}`;
+            console.log(decodedQR.data);
+            stopCamera(); // Stop the camera after a successful scan
+        }
+    }, 300); // Scan every 300ms
+}
 
-  function onScanError(err) {
-    //  console.error(err);
-    // Show the manual code entry if an error occurs
+startScanner();
 
-    document.getElementById("manualCodeEntry").style.display = "block";
-  }
-  // document.addEventListener("DOMContentLoaded", function () {
-  //   document
-  //     .getElementById("submitCodeButton")
-  //     .addEventListener("click", function () {
-  //       const scooterCode = document.getElementById("manualCode").value;
-  //       const currentBalance =
-  //         document.getElementById("currentBalance").textContent;
-  //       localStorage.setItem("scooterCode", scooterCode);
-  //       localStorage.setItem("currentBalance", currentBalance);
-  //       window.location.href = "MyScooter.html";
-  //     });
-  // //
-  //   document
-  //     .getElementById("scanQRButton")
-  //     .addEventListener("click", function () {
-  //       const html5QrCode = new Html5Qrcode("reader");
-  //       html5QrCode
-  //         .start(
-  //           { facingMode: "environment" }, // Use rear camera
-  //           {
-  //             fps: 10, // Scans per second
-  //             qrbox: { width: 250, height: 250 }, // QR code scanning box
-  //           },
-  //           (qrCodeMessage) => {
-  //             // Handle the scanned code
-  //             const scooterCode = qrCodeMessage;
-  //             const currentBalance =
-  //               document.getElementById("currentBalance").textContent;
-  //             localStorage.setItem("scooterCode", scooterCode);
-  //             localStorage.setItem("currentBalance", currentBalance);
-  //             window.location.href = "MyScooter.html";
-  //           },
-  //           (errorMessage) => {
-  //             // Handle scan error
-  //             console.log(`QR Code no longer in front of camera.`);
-  //           }
-  //         )
-  //         .catch((err) => {
-  //           // Start failed, handle it
-  //           console.error(`Unable to start scanning, error: ${err}`);
-  //         });
-  //     });
-  // });
-  //
+})
 
-  const requestCameraButton = document.querySelector(".html5-qrcode-element ");
+// document.getElementById("agreeButton").addEventListener("click", function () {
+//   // Hide the modal after the user agrees
+//   document.getElementById("termsModal").style.display = "none";
 
-  document
-    .querySelector(".html5-qrcode-element ")
-    .addEventListener("click", function () {
-      // Hide the scan QR button after it's clicked
-      document.getElementById("manualCodeEntry").style.display = "block";
-    });
+//   // Hide the scan QR button after it's clicked
+//   document.getElementById("scanCont").style.display = "none";
 
-  if (requestCameraButton) {
-    requestCameraButton.addEventListener("click", function () {
-      const errorElement = document.getElementById("reader__header_message");
+//   const scanner = new Html5QrcodeScanner("reader", {
+//     qrbox: { width: 250, height: 250 },
+//     fps: 20,
+//   });
 
-      if (errorElement && errorElement.innerText.includes("NotFoundError")) {
-        // Show the "Enter Scooter ID" input if there's a NotFoundError
-        document.getElementById("manualCodeEntry").style.display = "block";
-      }
-    });
-  } else {
-    console.error("Request Camera Permissions button not found.");
-  }
-});
+//   scanner.render(onScanSuccess, onScanError);
+
+//   function onScanSuccess(decodedText) {
+//     displayScooterDetails(decodedText);
+//     // Hide the reader after a successful scan
+//     document.getElementById("reader").style.display = "none";
+//     document.getElementById("manualCodeEntry").style.display = "none";
+//   }
+
+//   function onScanError(err) {
+//     //  console.error(err);
+//     // Show the manual code entry if an error occurs
+
+//     document.getElementById("manualCodeEntry").style.display = "block";
+//   }
+//   // document.addEventListener("DOMContentLoaded", function () {
+//   //   document
+//   //     .getElementById("submitCodeButton")
+//   //     .addEventListener("click", function () {
+//   //       const scooterCode = document.getElementById("manualCode").value;
+//   //       const currentBalance =
+//   //         document.getElementById("currentBalance").textContent;
+//   //       localStorage.setItem("scooterCode", scooterCode);
+//   //       localStorage.setItem("currentBalance", currentBalance);
+//   //       window.location.href = "MyScooter.html";
+//   //     });
+//   // //
+//   //   document
+//   //     .getElementById("scanQRButton")
+//   //     .addEventListener("click", function () {
+//   //       const html5QrCode = new Html5Qrcode("reader");
+//   //       html5QrCode
+//   //         .start(
+//   //           { facingMode: "environment" }, // Use rear camera
+//   //           {
+//   //             fps: 10, // Scans per second
+//   //             qrbox: { width: 250, height: 250 }, // QR code scanning box
+//   //           },
+//   //           (qrCodeMessage) => {
+//   //             // Handle the scanned code
+//   //             const scooterCode = qrCodeMessage;
+//   //             const currentBalance =
+//   //               document.getElementById("currentBalance").textContent;
+//   //             localStorage.setItem("scooterCode", scooterCode);
+//   //             localStorage.setItem("currentBalance", currentBalance);
+//   //             window.location.href = "MyScooter.html";
+//   //           },
+//   //           (errorMessage) => {
+//   //             // Handle scan error
+//   //             console.log(`QR Code no longer in front of camera.`);
+//   //           }
+//   //         )
+//   //         .catch((err) => {
+//   //           // Start failed, handle it
+//   //           console.error(`Unable to start scanning, error: ${err}`);
+//   //         });
+//   //     });
+//   // });
+//   //
+
+//   const requestCameraButton = document.querySelector(".html5-qrcode-element ");
+
+//   document
+//     .querySelector(".html5-qrcode-element ")
+//     .addEventListener("click", function () {
+//       // Hide the scan QR button after it's clicked
+//       document.getElementById("manualCodeEntry").style.display = "block";
+//     });
+
+//   if (requestCameraButton) {
+//     requestCameraButton.addEventListener("click", function () {
+//       const errorElement = document.getElementById("reader__header_message");
+
+//       if (errorElement && errorElement.innerText.includes("NotFoundError")) {
+//         // Show the "Enter Scooter ID" input if there's a NotFoundError
+//         document.getElementById("manualCodeEntry").style.display = "block";
+//       }
+//     });
+//   } else {
+//     console.error("Request Camera Permissions button not found.");
+//   }
+// });
 
 document
   .getElementById("submitCodeButton")
