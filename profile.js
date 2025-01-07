@@ -1128,6 +1128,7 @@ document.getElementById("scanQRButton").addEventListener("click", function () {
 });
 document.getElementById("agreeButton").addEventListener("click",()=>{
   document.getElementById("scanQRButton").style.display="none"
+   document.getElementById("buttoncircle").style.display="none"
   const video = document.getElementById('preview');
   
   let scanInterval;
