@@ -1127,6 +1127,7 @@ document.getElementById("scanQRButton").addEventListener("click", function () {
   document.getElementById("termsModal").style.display = "flex";
 });
 document.getElementById("agreeButton").addEventListener("click",()=>{
+  document.getElementById("scanQRButton").style.display="none"
   const video = document.getElementById('preview');
   
   let scanInterval;
