@@ -45,7 +45,12 @@
 
       <button id="flashButton">Open Flash</button>
       <button id="closeButton">X</button>
+      <div id="manualCodey">
+        <input type="text" id="manualCode" placeholder="or Enter Scooter Code">
+        <button id="submitCodeButton">Ride</button>
     </div>
+    </div>
+   
   </div>
 
 </div>
@@ -119,14 +124,23 @@
         <li><a id="logoutButton" onclick="logout()">Log out</a></li>
         </ul>
     </div>
-
- 
-<div id="balanceContainer" class="balance-container">
-   <div class="mybala"> My balance</div>
-    <!-- <img src="imgs/logo withoutbg.png" class="balalogo" alt=""> -->
-    <span class="balance-text" id="currentBalance">click to view<sub>EGP</sub></span>
+    <div id="walletIcon" class="wallet-icon" onclick="showBalanceContainer()">
+        <i class="fa-solid fa-wallet fa-lg" style="color: #ffffff;"></i>
+    </div>
     
-</div>
+    <div id="balanceContainer" class="balance-container">
+       
+        <div class="mybala"> My balance</div>
+         <!-- <img src="imgs/logo withoutbg.png" class="balalogo" alt=""> -->
+         <span class="balance-text" id="currentBalance">click to view<sub>EGP</sub></span>
+         
+         <div class="eye-icon" id="eyeIcon" onclick="hideBalanceContainer()">
+            <i class="fa-solid fa-eye-slash" style="color: #ffffff;"></i>
+        </div>
+       
+    </div>
+ 
+
 <a href="checkout.html"><span class="pluss">+</span></a>
    <!-- New Scooter Details Container -->
    <div id="scooterDetails" class="scooter-details" style="display:none;">
@@ -155,14 +169,14 @@
     <!-- Scooter Details Container -->
     <div id="newScooterDetails" class="scooter-details" style="display:none;">
         <span id="closeScooterDetails" style="cursor:pointer; position:absolute; top:10px; left:10px;">✖</span>
-        <div class="scooter-id" id="scooterIdContainer">SCOOT ID: <span id="newScooterId"></span></div>
+        <div class="scooter-id" id="scooterIdContainer">SCOOT ID: <span id="newScooterId2"></span></div>
         <div class="scooter-status" style="margin-top: 0;">
         <img src="imgs/Good-Quality-Yellow-Black-Electric-Scooter-for-Sale.jpg" alt="Scooter" class="scooter-image" id="scooter-image">
         
         <div class="battery-time-container">
             <div class="battery-status">
-                <i class="fa-solid fa-battery-full fa-lg" style="color: #FFD43B;"></i>
-              <span id="batteryPercentage">100%</span>
+                <i class="fa-solid fa-coins fa-lg" style="color: #FFD43B;"></i>
+              <span id="batteryPercentage">3EGP</span>
             </div>
             <div class="time-left">
                 <i class="fa-solid fa-hourglass-end fa-lg" style="color: #FFD43B;"></i>

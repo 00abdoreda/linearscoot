@@ -1235,6 +1235,78 @@ video.addEventListener("loadedmetadata", () => {
   });
 });
 
+document.addEventListener("DOMContentLoaded", function () {
+    const walletIcon = document.getElementById("walletIcon");
+    const balanceContainer = document.getElementById("balanceContainer");
+    const eyeIcon = document.getElementById("eyeIcon");
+
+    walletIcon.addEventListener("click", function () {
+        walletIcon.style.display = "none";
+        balanceContainer.style.display = "block";
+    });
+
+    eyeIcon.addEventListener("click", function () {
+        balanceContainer.style.display = "none";
+        walletIcon.style.display = "flex";
+    });
+}); 
+
+document.addEventListener("DOMContentLoaded", function () {
+const submitCodeButton = document.getElementById("submitCodeButton");
+const manualCodeInput = document.getElementById("manualCode");
+const newScooterId = document.getElementById("newScooterId");
+const newScooterId2 = document.getElementById("newScooterId2");
+const scooterDetails = document.getElementById("scooterDetails");
+const newScooterDetails = document.getElementById("newScooterDetails");
+const scannersContainer = document.getElementById("scannersContainer");
+const startRideButton = document.getElementById("startRideButton");
+  const endRideButton = document.getElementById("endRideButton");
+  const menuButton = document.getElementById("menuButton");
+  const scanCont = document.getElementById("scanCont");
+  const scan = document.getElementById("buttoncircle");
+  const ss = document.getElementById("scanQRButton");
+
+   const savedScooterId = localStorage.getItem("scooterId");
+   if (savedScooterId) {
+     newScooterId.textContent = savedScooterId;
+     newScooterId2.textContent = savedScooterId;
+    // 
+   }
+
+  submitCodeButton.addEventListener("click", function () {
+    const scooterCode = manualCodeInput.value;
+    if (scooterCode) {
+      
+      newScooterId.textContent = scooterCode;
+      newScooterId2.textContent = scooterCode;
+      localStorage.setItem("scooterId", scooterCode);
+      scooterDetails.style.display = "block";
+      
+      scannersContainer.style.display = "none";
+        manualCodeInput.value = "";
+    } else {
+      alert("Please enter a scooter code.");
+    }
+  });
+
+      startRideButton.addEventListener("click", function () {
+       
+        scooterDetails.style.display = "none";
+        
+        newScooterDetails.style.display = "block";
+      });
+
+         endRideButton.addEventListener("click", function () {
+         
+           newScooterDetails.style.display = "none";
+           menuButton.style.display = "block";
+           scanCont.style.display = "block";
+           ss.style.display = "flex";
+            scan.style.display = "flex";
+         });
+  
+});
+
 // document.getElementById("agreeButton").addEventListener("click", function () {
 //   // Hide the modal after the user agrees
 //   document.getElementById("termsModal").style.display = "none";
