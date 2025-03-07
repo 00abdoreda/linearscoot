@@ -80,21 +80,21 @@ document
         this.innerHTML = "Error fetching balance <sub>EGP</sub>";
       });
   });
-document
-  .getElementById("ProfileBalance")
-  .addEventListener("click", function () {
-    // Assuming you have a function to fetch the balance from your API
-    fetchBalanceFromAPI()
-      .then((balance) => {
-        // Update the span text with the fetched balance
-        this.innerHTML = `${balance} <sub>EGP</sub>`;
-      })
-      .catch((error) => {
-        console.error("Error fetching balance:", error);
-        // Optionally, you could handle the error by displaying a message
-        this.innerHTML = "Error fetching balance <sub>EGP</sub>";
-      });
-  });
+// document
+//   .getElementById("ProfileBalance")
+//   .addEventListener("click", function () {
+//     // Assuming you have a function to fetch the balance from your API
+//     fetchBalanceFromAPI()
+//       .then((balance) => {
+//         // Update the span text with the fetched balance
+//         this.innerHTML = `${balance} <sub>EGP</sub>`;
+//       })
+//       .catch((error) => {
+//         console.error("Error fetching balance:", error);
+//         // Optionally, you could handle the error by displaying a message
+//         this.innerHTML = "Error fetching balance <sub>EGP</sub>";
+//       });
+//   });
 function initMap() {
   const allowedAreaCoords = [
     // { lat: 29.43416116753383, lng: 32.398229305394274 }, //clockwise
@@ -1243,9 +1243,11 @@ document.addEventListener("DOMContentLoaded", function () {
     walletIcon.addEventListener("click", function () {
         walletIcon.style.display = "none";
         balanceContainer.style.display = "block";
+      //  balanceContainer.classList.add("show");
     });
 
     eyeIcon.addEventListener("click", function () {
+      // balanceContainer.classList.remove("show");
         balanceContainer.style.display = "none";
         walletIcon.style.display = "flex";
     });
@@ -1721,3 +1723,19 @@ function logout() {
   localStorage.removeItem("userData");
   window.location.href = "/login.html";
 }
+
+ function copyLink() {
+   const link = window.location.href;
+   navigator.clipboard
+     .writeText(link)
+     .then(() => {
+       const balanceElement = document.querySelector(".balance");
+       balanceElement.textContent = "Copied!";
+       setTimeout(() => {
+         balanceElement.textContent = "Copy Link";
+       }, 2000);
+     })
+     .catch((err) => {
+       console.error("Failed to copy: ", err);
+     });
+ }
